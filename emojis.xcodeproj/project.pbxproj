@@ -3,18 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360E0EF426BD7CB438218D04 /* Pods_emojisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E70094AC9B3FC400E50DB26 /* Pods_emojisTests.framework */; };
+		AFEDC64C684FB7DC699FE161 /* Pods_emojis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823546A24CCBBA5DF648ED0D /* Pods_emojis.framework */; };
+		BD592D1A4746C6FB2B63637F /* Pods_emojis_emojisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8671914C8F21BFBFD88EE4E6 /* Pods_emojis_emojisUITests.framework */; };
 		FA8160E72614BC5000A85A6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8160E62614BC5000A85A6F /* AppDelegate.swift */; };
-		FA8160E92614BC5000A85A6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8160E82614BC5000A85A6F /* SceneDelegate.swift */; };
-		FA8160EB2614BC5000A85A6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8160EA2614BC5000A85A6F /* ViewController.swift */; };
-		FA8160EE2614BC5000A85A6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8160EC2614BC5000A85A6F /* Main.storyboard */; };
+		FA8160EB2614BC5000A85A6F /* EmojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8160EA2614BC5000A85A6F /* EmojiViewController.swift */; };
+		FA8160EE2614BC5000A85A6F /* Emoji.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8160EC2614BC5000A85A6F /* Emoji.storyboard */; };
 		FA8160F02614BC5300A85A6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8160EF2614BC5300A85A6F /* Assets.xcassets */; };
 		FA8160F32614BC5300A85A6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8160F12614BC5300A85A6F /* LaunchScreen.storyboard */; };
 		FA8160FE2614BC5300A85A6F /* emojisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8160FD2614BC5300A85A6F /* emojisTests.swift */; };
 		FA8161092614BC5300A85A6F /* emojisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8161082614BC5300A85A6F /* emojisUITests.swift */; };
+		FA8161252614E47E00A85A6F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8161242614E47E00A85A6F /* Coordinator.swift */; };
+		FA81612D2614E68000A85A6F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81612C2614E68000A85A6F /* AppCoordinator.swift */; };
+		FA8161492614F66F00A85A6F /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8161482614F66F00A85A6F /* GithubService.swift */; };
+		FA8161522614F9B100A85A6F /* EmojiCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8161512614F9B100A85A6F /* EmojiCoordinator.swift */; };
+		FA81615F2614FFB900A85A6F /* EmojiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81615E2614FFB900A85A6F /* EmojiViewModel.swift */; };
+		FA816164261509EB00A85A6F /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA816163261509EB00A85A6F /* Storyboarded.swift */; };
+		FA81616C2615123F00A85A6F /* GithubNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81616B2615123F00A85A6F /* GithubNetworkManager.swift */; };
+		FAAADD7226161FF200AA840C /* GithubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAADD7126161FF200AA840C /* GithubError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +45,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E70094AC9B3FC400E50DB26 /* Pods_emojisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_emojisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29EA6AC11868E5CD6E54EA35 /* Pods-emojis-emojisUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojis-emojisUITests.debug.xcconfig"; path = "Target Support Files/Pods-emojis-emojisUITests/Pods-emojis-emojisUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		823546A24CCBBA5DF648ED0D /* Pods_emojis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_emojis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8671914C8F21BFBFD88EE4E6 /* Pods_emojis_emojisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_emojis_emojisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B22B6F395786B8A6A90BB32C /* Pods-emojisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojisTests.release.xcconfig"; path = "Target Support Files/Pods-emojisTests/Pods-emojisTests.release.xcconfig"; sourceTree = "<group>"; };
+		CF8301E98E3C670489F33B4C /* Pods-emojisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojisTests.debug.xcconfig"; path = "Target Support Files/Pods-emojisTests/Pods-emojisTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DE65EB9CCF06AD2618F0C020 /* Pods-emojis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojis.release.xcconfig"; path = "Target Support Files/Pods-emojis/Pods-emojis.release.xcconfig"; sourceTree = "<group>"; };
+		E0AB9D43E518E0A6392D2F7C /* Pods-emojis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojis.debug.xcconfig"; path = "Target Support Files/Pods-emojis/Pods-emojis.debug.xcconfig"; sourceTree = "<group>"; };
 		FA8160E32614BC5000A85A6F /* emojis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emojis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8160E62614BC5000A85A6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA8160E82614BC5000A85A6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FA8160EA2614BC5000A85A6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FA8160ED2614BC5000A85A6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA8160EA2614BC5000A85A6F /* EmojiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewController.swift; sourceTree = "<group>"; };
+		FA8160ED2614BC5000A85A6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Emoji.storyboard; sourceTree = "<group>"; };
 		FA8160EF2614BC5300A85A6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8160F22614BC5300A85A6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8160F42614BC5300A85A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +66,15 @@
 		FA8161042614BC5300A85A6F /* emojisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emojisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8161082614BC5300A85A6F /* emojisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emojisUITests.swift; sourceTree = "<group>"; };
 		FA81610A2614BC5300A85A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA8161242614E47E00A85A6F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		FA81612C2614E68000A85A6F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FA8161482614F66F00A85A6F /* GithubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
+		FA8161512614F9B100A85A6F /* EmojiCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCoordinator.swift; sourceTree = "<group>"; };
+		FA81615E2614FFB900A85A6F /* EmojiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewModel.swift; sourceTree = "<group>"; };
+		FA816163261509EB00A85A6F /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		FA81616B2615123F00A85A6F /* GithubNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubNetworkManager.swift; sourceTree = "<group>"; };
+		FAAADD7126161FF200AA840C /* GithubError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubError.swift; sourceTree = "<group>"; };
+		FF73000A0EFBC607F8DE93D9 /* Pods-emojis-emojisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojis-emojisUITests.release.xcconfig"; path = "Target Support Files/Pods-emojis-emojisUITests/Pods-emojis-emojisUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFEDC64C684FB7DC699FE161 /* Pods_emojis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				360E0EF426BD7CB438218D04 /* Pods_emojisTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +98,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD592D1A4746C6FB2B63637F /* Pods_emojis_emojisUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		739747AE1B4064F78DD40C5D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E0AB9D43E518E0A6392D2F7C /* Pods-emojis.debug.xcconfig */,
+				DE65EB9CCF06AD2618F0C020 /* Pods-emojis.release.xcconfig */,
+				29EA6AC11868E5CD6E54EA35 /* Pods-emojis-emojisUITests.debug.xcconfig */,
+				FF73000A0EFBC607F8DE93D9 /* Pods-emojis-emojisUITests.release.xcconfig */,
+				CF8301E98E3C670489F33B4C /* Pods-emojisTests.debug.xcconfig */,
+				B22B6F395786B8A6A90BB32C /* Pods-emojisTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		ED69750EFDD98BEEFE14BA2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				823546A24CCBBA5DF648ED0D /* Pods_emojis.framework */,
+				8671914C8F21BFBFD88EE4E6 /* Pods_emojis_emojisUITests.framework */,
+				0E70094AC9B3FC400E50DB26 /* Pods_emojisTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FA8160DA2614BC5000A85A6F = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +135,8 @@
 				FA8160FC2614BC5300A85A6F /* emojisTests */,
 				FA8161072614BC5300A85A6F /* emojisUITests */,
 				FA8160E42614BC5000A85A6F /* Products */,
+				739747AE1B4064F78DD40C5D /* Pods */,
+				ED69750EFDD98BEEFE14BA2C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +153,13 @@
 		FA8160E52614BC5000A85A6F /* emojis */ = {
 			isa = PBXGroup;
 			children = (
+				FA8161232614E44500A85A6F /* Common */,
+				FA81613E2614F59B00A85A6F /* Network */,
+				FA81613D2614F55300A85A6F /* Model */,
+				FA81613A2614F51700A85A6F /* Emoji */,
+				FA8161212614E3F500A85A6F /* Base */,
 				FA8160E62614BC5000A85A6F /* AppDelegate.swift */,
-				FA8160E82614BC5000A85A6F /* SceneDelegate.swift */,
-				FA8160EA2614BC5000A85A6F /* ViewController.swift */,
-				FA8160EC2614BC5000A85A6F /* Main.storyboard */,
 				FA8160EF2614BC5300A85A6F /* Assets.xcassets */,
-				FA8160F12614BC5300A85A6F /* LaunchScreen.storyboard */,
-				FA8160F42614BC5300A85A6F /* Info.plist */,
 			);
 			path = emojis;
 			sourceTree = "<group>";
@@ -128,6 +182,101 @@
 			path = emojisUITests;
 			sourceTree = "<group>";
 		};
+		FA8161212614E3F500A85A6F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				FA8161502614F92A00A85A6F /* View */,
+				FA8161222614E40200A85A6F /* Coordinator */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		FA8161222614E40200A85A6F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				FA81612C2614E68000A85A6F /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		FA8161232614E44500A85A6F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FA8160F42614BC5300A85A6F /* Info.plist */,
+				FA8161242614E47E00A85A6F /* Coordinator.swift */,
+				FA816163261509EB00A85A6F /* Storyboarded.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FA81613A2614F51700A85A6F /* Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				FA81615D2614FF9500A85A6F /* View */,
+				FA81613B2614F52F00A85A6F /* Controller */,
+				FA8161592614F9B600A85A6F /* Coordinator */,
+				FA81613C2614F54B00A85A6F /* ViewModel */,
+			);
+			path = Emoji;
+			sourceTree = "<group>";
+		};
+		FA81613B2614F52F00A85A6F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA8160EA2614BC5000A85A6F /* EmojiViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FA81613C2614F54B00A85A6F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FA81615E2614FFB900A85A6F /* EmojiViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FA81613D2614F55300A85A6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA81613E2614F59B00A85A6F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FA8161482614F66F00A85A6F /* GithubService.swift */,
+				FA81616B2615123F00A85A6F /* GithubNetworkManager.swift */,
+				FAAADD7126161FF200AA840C /* GithubError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FA8161502614F92A00A85A6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA8160F12614BC5300A85A6F /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA8161592614F9B600A85A6F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				FA8161512614F9B100A85A6F /* EmojiCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		FA81615D2614FF9500A85A6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA8160EC2614BC5000A85A6F /* Emoji.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +284,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA81610D2614BC5300A85A6F /* Build configuration list for PBXNativeTarget "emojis" */;
 			buildPhases = (
+				757635F398C5961197B43A7A /* [CP] Check Pods Manifest.lock */,
 				FA8160DF2614BC5000A85A6F /* Sources */,
 				FA8160E02614BC5000A85A6F /* Frameworks */,
 				FA8160E12614BC5000A85A6F /* Resources */,
+				3D6847ED66B178A2C3D061FE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +303,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA8161102614BC5300A85A6F /* Build configuration list for PBXNativeTarget "emojisTests" */;
 			buildPhases = (
+				7F9D4AFDE1987122922F8C03 /* [CP] Check Pods Manifest.lock */,
 				FA8160F52614BC5300A85A6F /* Sources */,
 				FA8160F62614BC5300A85A6F /* Frameworks */,
 				FA8160F72614BC5300A85A6F /* Resources */,
@@ -170,9 +322,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA8161132614BC5300A85A6F /* Build configuration list for PBXNativeTarget "emojisUITests" */;
 			buildPhases = (
+				931E6655892AA41B64C7927B /* [CP] Check Pods Manifest.lock */,
 				FA8161002614BC5300A85A6F /* Sources */,
 				FA8161012614BC5300A85A6F /* Frameworks */,
 				FA8161022614BC5300A85A6F /* Resources */,
+				5418A2EC1AB819EA506F541D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -233,7 +387,7 @@
 			files = (
 				FA8160F32614BC5300A85A6F /* LaunchScreen.storyboard in Resources */,
 				FA8160F02614BC5300A85A6F /* Assets.xcassets in Resources */,
-				FA8160EE2614BC5000A85A6F /* Main.storyboard in Resources */,
+				FA8160EE2614BC5000A85A6F /* Emoji.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +407,124 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3D6847ED66B178A2C3D061FE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-emojis/Pods-emojis-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-emojis/Pods-emojis-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-emojis/Pods-emojis-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5418A2EC1AB819EA506F541D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-emojis-emojisUITests/Pods-emojis-emojisUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-emojis-emojisUITests/Pods-emojis-emojisUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-emojis-emojisUITests/Pods-emojis-emojisUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		757635F398C5961197B43A7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-emojis-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F9D4AFDE1987122922F8C03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-emojisTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		931E6655892AA41B64C7927B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-emojis-emojisUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FA8160DF2614BC5000A85A6F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA8160EB2614BC5000A85A6F /* ViewController.swift in Sources */,
+				FA8161252614E47E00A85A6F /* Coordinator.swift in Sources */,
+				FA81615F2614FFB900A85A6F /* EmojiViewModel.swift in Sources */,
+				FA8161492614F66F00A85A6F /* GithubService.swift in Sources */,
+				FA8160EB2614BC5000A85A6F /* EmojiViewController.swift in Sources */,
+				FA81616C2615123F00A85A6F /* GithubNetworkManager.swift in Sources */,
+				FA81612D2614E68000A85A6F /* AppCoordinator.swift in Sources */,
 				FA8160E72614BC5000A85A6F /* AppDelegate.swift in Sources */,
-				FA8160E92614BC5000A85A6F /* SceneDelegate.swift in Sources */,
+				FA8161522614F9B100A85A6F /* EmojiCoordinator.swift in Sources */,
+				FA816164261509EB00A85A6F /* Storyboarded.swift in Sources */,
+				FAAADD7226161FF200AA840C /* GithubError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,12 +560,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FA8160EC2614BC5000A85A6F /* Main.storyboard */ = {
+		FA8160EC2614BC5000A85A6F /* Emoji.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FA8160ED2614BC5000A85A6F /* Base */,
 			);
-			name = Main.storyboard;
+			name = Emoji.storyboard;
 			sourceTree = "<group>";
 		};
 		FA8160F12614BC5300A85A6F /* LaunchScreen.storyboard */ = {
@@ -433,11 +697,12 @@
 		};
 		FA81610E2614BC5300A85A6F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0AB9D43E518E0A6392D2F7C /* Pods-emojis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = emojis/Info.plist;
+				INFOPLIST_FILE = emojis/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,11 +716,12 @@
 		};
 		FA81610F2614BC5300A85A6F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE65EB9CCF06AD2618F0C020 /* Pods-emojis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = emojis/Info.plist;
+				INFOPLIST_FILE = emojis/Common/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,6 +735,7 @@
 		};
 		FA8161112614BC5300A85A6F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF8301E98E3C670489F33B4C /* Pods-emojisTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +757,7 @@
 		};
 		FA8161122614BC5300A85A6F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B22B6F395786B8A6A90BB32C /* Pods-emojisTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -511,6 +779,7 @@
 		};
 		FA8161142614BC5300A85A6F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29EA6AC11868E5CD6E54EA35 /* Pods-emojis-emojisUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -530,6 +799,7 @@
 		};
 		FA8161152614BC5300A85A6F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF73000A0EFBC607F8DE93D9 /* Pods-emojis-emojisUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
