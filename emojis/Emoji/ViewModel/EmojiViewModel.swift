@@ -25,16 +25,17 @@ class EmojiViewModel: EmojiViewModelProtocol {
     }
     
     func getEmojis() {
-        GithubNetworkManager.shared.getEmojis()
-            .subscribe(onSuccess: { [weak self] response in
-                response.forEach {
-                    EmojiCoreData.shared.save(name: $0.key, link: $0.value)
-                }
-                
-                // check if core data retrieves all emojis.
-                    EmojiCoreData.shared.retrieveValues()
-            }, onError: { [weak self] error in
-                    self?.emoji.onError(error)
-            })
+        let retrievedEmoji = EmojiCoreData.shared.retrieveValues()
+        if retrievedEmoji.isEmpty {
+            GithubNetworkManager.shared.getEmojis()
+                .subscribe(onSuccess: { response in
+                    response.forEach {
+                        EmojiCoreData.shared.save(name: $0.key, link: $0.value)
+                    }
+                }, onError: { [weak self] error in
+                        self?.emoji.onError(error)
+                })
+        }
+        self.emoji.onNext(retrievedEmoji)
     }
 }

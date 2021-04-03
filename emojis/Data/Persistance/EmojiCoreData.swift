@@ -31,7 +31,7 @@ final class EmojiCoreData {
         }
     }
     
-    func retrieveValues() {
+    func retrieveValues() -> [String:String] {
         if let appDelegate = UIApplication.shared
             .delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
@@ -40,14 +40,19 @@ final class EmojiCoreData {
             do {
                 let results = try context.fetch(fetchRequest)
                 
+                var emoji: [String:String] = [:]
                 for result in results {
                     if let link = result.link, let name = result.name {
                         print("Name: \(name) - link: \(link)\n")
+                        emoji[name] = link
                     }
                 }
+                
+                return emoji
             } catch {
                 print("Couldn't retrieve values!")
             }
         }
+        return [:]
     }
 }
