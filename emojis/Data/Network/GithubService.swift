@@ -27,7 +27,7 @@ extension GithubService: TargetType {
     var path: String {
         switch self {
         case .emoji:
-            return "/emojiss"
+            return "/emojis"
         }
     }
     

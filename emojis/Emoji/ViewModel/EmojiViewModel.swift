@@ -4,7 +4,6 @@
 //
 //  Created by Yuri Pedroso on 31/03/21.
 //
-
 import RxSwift
 
 protocol EmojiViewModelProtocol {
@@ -27,10 +26,15 @@ class EmojiViewModel: EmojiViewModelProtocol {
     
     func getEmojis() {
         GithubNetworkManager.shared.getEmojis()
-        .subscribe { data in
-            self.emoji.onNext(data)
-        } onError: { error in
-            self.emoji.onError(error)
-        }
+            .subscribe(onSuccess: { [weak self] response in
+                response.forEach {
+                    EmojiCoreData.shared.save(name: $0.key, link: $0.value)
+                }
+                
+                // check if core data retrieves all emojis.
+                    EmojiCoreData.shared.retrieveValues()
+            }, onError: { [weak self] error in
+                    self?.emoji.onError(error)
+            })
     }
 }

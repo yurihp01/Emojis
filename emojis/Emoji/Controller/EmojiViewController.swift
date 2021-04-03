@@ -25,9 +25,7 @@ class EmojiViewController: UIViewController, Storyboarded {
             onNext: { emoji in
                 print(emoji)
             }, onError: { error in
-                let githubError = error as? GithubError
-                    
-                print(githubError?.localizedDescription ?? error.localizedDescription)
+                print(error)
             }
         ).disposed(by: disposeBag)
     }

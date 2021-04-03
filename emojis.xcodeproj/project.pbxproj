@@ -10,6 +10,8 @@
 		360E0EF426BD7CB438218D04 /* Pods_emojisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E70094AC9B3FC400E50DB26 /* Pods_emojisTests.framework */; };
 		AFEDC64C684FB7DC699FE161 /* Pods_emojis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823546A24CCBBA5DF648ED0D /* Pods_emojis.framework */; };
 		BD592D1A4746C6FB2B63637F /* Pods_emojis_emojisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8671914C8F21BFBFD88EE4E6 /* Pods_emojis_emojisUITests.framework */; };
+		FA6CF69E26177E7E00FFBFF6 /* Emojis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF69C26177E7E00FFBFF6 /* Emojis.xcdatamodeld */; };
+		FA6CF6E726178B6200FFBFF6 /* EmojiCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF6E626178B6200FFBFF6 /* EmojiCoreData.swift */; };
 		FA8160E72614BC5000A85A6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8160E62614BC5000A85A6F /* AppDelegate.swift */; };
 		FA8160EB2614BC5000A85A6F /* EmojiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8160EA2614BC5000A85A6F /* EmojiViewController.swift */; };
 		FA8160EE2614BC5000A85A6F /* Emoji.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8160EC2614BC5000A85A6F /* Emoji.storyboard */; };
@@ -53,6 +55,8 @@
 		CF8301E98E3C670489F33B4C /* Pods-emojisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojisTests.debug.xcconfig"; path = "Target Support Files/Pods-emojisTests/Pods-emojisTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE65EB9CCF06AD2618F0C020 /* Pods-emojis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojis.release.xcconfig"; path = "Target Support Files/Pods-emojis/Pods-emojis.release.xcconfig"; sourceTree = "<group>"; };
 		E0AB9D43E518E0A6392D2F7C /* Pods-emojis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojis.debug.xcconfig"; path = "Target Support Files/Pods-emojis/Pods-emojis.debug.xcconfig"; sourceTree = "<group>"; };
+		FA6CF69D26177E7E00FFBFF6 /* Emojis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Emojis.xcdatamodel; sourceTree = "<group>"; };
+		FA6CF6E626178B6200FFBFF6 /* EmojiCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCoreData.swift; sourceTree = "<group>"; };
 		FA8160E32614BC5000A85A6F /* emojis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emojis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8160E62614BC5000A85A6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8160EA2614BC5000A85A6F /* EmojiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +132,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA6CF6E426178A9600FFBFF6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FA6CF6E526178ABC00FFBFF6 /* Persistance */,
+				FA81613D2614F55300A85A6F /* Model */,
+				FA81613E2614F59B00A85A6F /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FA6CF6E526178ABC00FFBFF6 /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				FA6CF6E626178B6200FFBFF6 /* EmojiCoreData.swift */,
+			);
+			path = Persistance;
+			sourceTree = "<group>";
+		};
 		FA8160DA2614BC5000A85A6F = {
 			isa = PBXGroup;
 			children = (
@@ -153,12 +175,12 @@
 		FA8160E52614BC5000A85A6F /* emojis */ = {
 			isa = PBXGroup;
 			children = (
+				FA6CF6E426178A9600FFBFF6 /* Data */,
 				FA8161232614E44500A85A6F /* Common */,
-				FA81613E2614F59B00A85A6F /* Network */,
-				FA81613D2614F55300A85A6F /* Model */,
 				FA81613A2614F51700A85A6F /* Emoji */,
 				FA8161212614E3F500A85A6F /* Base */,
 				FA8160E62614BC5000A85A6F /* AppDelegate.swift */,
+				FA6CF69C26177E7E00FFBFF6 /* Emojis.xcdatamodeld */,
 				FA8160EF2614BC5300A85A6F /* Assets.xcassets */,
 			);
 			path = emojis;
@@ -516,6 +538,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8161252614E47E00A85A6F /* Coordinator.swift in Sources */,
+				FA6CF6E726178B6200FFBFF6 /* EmojiCoreData.swift in Sources */,
+				FA6CF69E26177E7E00FFBFF6 /* Emojis.xcdatamodeld in Sources */,
 				FA81615F2614FFB900A85A6F /* EmojiViewModel.swift in Sources */,
 				FA8161492614F66F00A85A6F /* GithubService.swift in Sources */,
 				FA8160EB2614BC5000A85A6F /* EmojiViewController.swift in Sources */,
@@ -857,6 +881,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FA6CF69C26177E7E00FFBFF6 /* Emojis.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA6CF69D26177E7E00FFBFF6 /* Emojis.xcdatamodel */,
+			);
+			currentVersion = FA6CF69D26177E7E00FFBFF6 /* Emojis.xcdatamodel */;
+			path = Emojis.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA8160DB2614BC5000A85A6F /* Project object */;
 }
