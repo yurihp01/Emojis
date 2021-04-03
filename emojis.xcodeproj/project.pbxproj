@@ -135,6 +135,7 @@
 		FA6CF6E426178A9600FFBFF6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				FA6CF7002618373D00FFBFF6 /* Error */,
 				FA6CF6E526178ABC00FFBFF6 /* Persistance */,
 				FA81613D2614F55300A85A6F /* Model */,
 				FA81613E2614F59B00A85A6F /* Network */,
@@ -148,6 +149,14 @@
 				FA6CF6E626178B6200FFBFF6 /* EmojiCoreData.swift */,
 			);
 			path = Persistance;
+			sourceTree = "<group>";
+		};
+		FA6CF7002618373D00FFBFF6 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				FAAADD7126161FF200AA840C /* GithubError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		FA8160DA2614BC5000A85A6F = {
@@ -270,7 +279,6 @@
 			children = (
 				FA8161482614F66F00A85A6F /* GithubService.swift */,
 				FA81616B2615123F00A85A6F /* GithubNetworkManager.swift */,
-				FAAADD7126161FF200AA840C /* GithubError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";

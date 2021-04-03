@@ -7,8 +7,11 @@
 
 import UIKit
 import RxSwift
+import Kingfisher
 
 class EmojiViewController: UIViewController, Storyboarded {
+    @IBOutlet weak var emojiImage: UIImageView!
+    
     let disposeBag: DisposeBag = DisposeBag()
     
     var viewModel: EmojiViewModelProtocol?
@@ -22,8 +25,15 @@ class EmojiViewController: UIViewController, Storyboarded {
     
     private func getObservable() {
         viewModel?.emoji.subscribe(
-            onNext: { emoji in
-                print(emoji)
+            onNext: { [weak self] emoji in
+                let key = emoji.keys.randomElement()
+                if let value = emoji.first(where: { $0.key == key })?.value {
+                    let url = URL(string: value)
+                    self?.emojiImage.kf.setImage(with: url)
+                } else {
+                    print(GithubError.notFound.localizedDescription)
+                }
+                
             }, onError: { error in
                 print(error)
             }

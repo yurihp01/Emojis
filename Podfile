@@ -7,6 +7,7 @@ target 'emojis' do
 
   # Pods for emojis
   pod 'Moya/RxSwift', '~> 14.0'
+  pod 'Kingfisher', '~> 6.0'
 
   target 'emojisTests' do
     inherit! :search_paths
