@@ -15,6 +15,7 @@ protocol EmojiProtocol: class {
 
 class EmojiViewController: UIViewController, Storyboarded {
     @IBOutlet weak var emojiImage: UIImageView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     let disposeBag: DisposeBag = DisposeBag()
     
@@ -24,8 +25,12 @@ class EmojiViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getObservable()
+        setSearchBar()
+    }
+    
+    private func setSearchBar() {
+        searchBar.autocapitalizationType = .none
     }
     
     private func getObservable() {
@@ -34,9 +39,7 @@ class EmojiViewController: UIViewController, Storyboarded {
                 
             let key = emoji.keys.randomElement()
             if let value = emoji.first(where: { $0.key == key })?.value {
-                let url = URL(string: value)
-                self?.emojiImage.kf.setImage(with: url)
-                
+                self?.setImage(url: value)
             } else {
                 print(GithubError.notFound.localizedDescription)
             }
@@ -45,12 +48,28 @@ class EmojiViewController: UIViewController, Storyboarded {
         }).disposed(by: disposeBag)
     }
     
+    private func setImage(url: String) {
+        let url = URL(string: url)
+        emojiImage.kf.setImage(with: url)
+    }
+    
     @IBAction func emojiListButton(_ sender: UIButton) {
         coordinator?.emojiList()
     }
     
     @IBAction func randomEmojiButton(_ sender: UIButton) {
         viewModel?.getEmojis()
+    }
+    
+    @IBAction func searchUserButton(_ sender: UIButton) {
+        viewModel?.getUser(login: searchBar.text ?? "", completion: { [weak self] (user, error) in
+            if let user = user {
+                guard let url = user.url else { return }
+                self?.emojiImage.kf.setImage(with: url)
+            } else {
+                print("Error: User not found")
+            }
+        })
     }
 }
 

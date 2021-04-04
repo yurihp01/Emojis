@@ -10,12 +10,15 @@ import Moya
 
 enum GithubService {
     case emoji
+    case user(username: String)
 }
 
 extension GithubService: TargetType {
     var method: Moya.Method {
         switch self {
         case .emoji:
+            return .get
+        case .user(_):
             return .get
         }
     }
@@ -28,6 +31,8 @@ extension GithubService: TargetType {
         switch self {
         case .emoji:
             return "/emojis"
+        case .user(let username):
+            return"/users/\(username)"
         }
     }
     

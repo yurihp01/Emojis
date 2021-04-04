@@ -17,6 +17,21 @@ struct GithubNetworkManager {
         provider.rx.request(.emoji)
             .filterSuccessfulStatusAndRedirectCodes()
             .map(EmojiType.self)
-            
+    }
+    
+    func getUserByUsername(username: String, completion: @escaping (User?, Error?) -> Void) {
+        provider.request(.user(username: username)) { (result) in
+            switch result {
+            case .success(let response):
+                do {
+                    let x = try JSONDecoder().decode(User.self, from: response.data)
+                    completion(x, nil)
+                } catch {
+                    print(error)
+                }
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
     }
 }

@@ -45,12 +45,12 @@ class EmojiListViewModel: EmojiListViewModelProtocol {
     
     
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void) {
-        let retrievedEmoji = EmojiCoreData.shared.retrieveValues()
+        let retrievedEmoji = CoreData.shared.retrieveEmoji()
         if retrievedEmoji.isEmpty {
             GithubNetworkManager.shared.getEmojis()
                 .subscribe(onSuccess: { response in
                     response.forEach {
-                        EmojiCoreData.shared.save(name: $0.key, link: $0.value)
+                        CoreData.shared.saveEmoji(name: $0.key, link: $0.value)
                     }
                 }, onError: { error in
                     completion(nil, error)
