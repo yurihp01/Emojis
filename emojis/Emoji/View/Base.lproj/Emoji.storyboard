@@ -55,23 +55,36 @@
                                     <action selector="searchUserButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cBb-f2-vQJ"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" searchBarStyle="prominent" translatesAutoresizingMaskIntoConstraints="NO" id="euq-RG-GtB">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="euq-RG-GtB">
                                 <rect key="frame" x="24" y="395" width="258" height="56"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOn-vX-8jT">
+                                <rect key="frame" x="24" y="461" width="366" height="30"/>
+                                <color key="backgroundColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="AVATARS LIST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="avatarsListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pba-9V-sdv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.24075669050000001" green="0.34270846840000002" blue="0.70423918959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aZr-bs-ciN" firstAttribute="top" secondItem="euq-RG-GtB" secondAttribute="top" id="AAx-EY-jXk"/>
+                            <constraint firstItem="VOn-vX-8jT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="AUY-Ej-fQe"/>
                             <constraint firstItem="nFP-dC-mLB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="J9E-dJ-rto"/>
                             <constraint firstItem="aZr-bs-ciN" firstAttribute="leading" secondItem="euq-RG-GtB" secondAttribute="trailing" constant="8" id="MP5-sv-kfk"/>
                             <constraint firstItem="euq-RG-GtB" firstAttribute="top" secondItem="sSk-dw-Clt" secondAttribute="bottom" constant="12" id="MZn-La-6QE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iBe-IO-gcx" secondAttribute="trailing" constant="24" id="MgV-eM-8Qn"/>
                             <constraint firstItem="sSk-dw-Clt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="RsB-IA-aMl"/>
+                            <constraint firstItem="VOn-vX-8jT" firstAttribute="top" secondItem="aZr-bs-ciN" secondAttribute="bottom" constant="10" id="XL9-yt-l72"/>
                             <constraint firstItem="sSk-dw-Clt" firstAttribute="top" secondItem="iBe-IO-gcx" secondAttribute="bottom" constant="12" id="Yzt-ti-yuv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VOn-vX-8jT" secondAttribute="trailing" constant="24" id="bqd-3f-JAn"/>
                             <constraint firstItem="nFP-dC-mLB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cDC-V1-elS"/>
                             <constraint firstItem="aZr-bs-ciN" firstAttribute="bottom" secondItem="euq-RG-GtB" secondAttribute="bottom" id="eTw-dD-RRu"/>
                             <constraint firstItem="iBe-IO-gcx" firstAttribute="top" secondItem="nFP-dC-mLB" secondAttribute="bottom" constant="99" id="l5T-Ko-v45"/>

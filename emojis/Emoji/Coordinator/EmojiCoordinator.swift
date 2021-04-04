@@ -30,10 +30,18 @@ class EmojiCoordinator: Coordinator {
 }
 
 extension EmojiCoordinator: EmojiProtocol {
-    func emojiList() {
+    func avatarsList() {
+        let coordinator = AvatarCoordinator(with: navigationController)
+        coordinator.parentCoordinator = self
+        add(childCoordinator: coordinator)
+        coordinator.start()
+    }
+    
+    func emojisList() {
         let coordinator = EmojiListCoordinator(navigationController)
         coordinator.parentCoordinator = self
         add(childCoordinator: coordinator)
         coordinator.start()
     }
+    
 }

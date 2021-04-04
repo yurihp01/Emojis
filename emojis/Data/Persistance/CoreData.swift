@@ -97,7 +97,7 @@ final class CoreData {
         return nil
     }
     
-    func retrieveUsers() -> [User] {
+    func retrieveAvatarsUrl() -> [String] {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
             let fetchRequest = NSFetchRequest<UserEntity>(entityName: "UserEntity")
@@ -105,20 +105,40 @@ final class CoreData {
             do {
                 let results = try context.fetch(fetchRequest)
 
-                var users: [User] = []
+                var urls: [String] = []
                 
                 for result in results {
-                    if let login = result.login, let avatarUrl = result.url {
-                        let user = User(login: login, avatarUrl: avatarUrl, id: Int(result.id))
-                        users.append(user)
+                    if let avatarUrl = result.url {
+                        urls.append(avatarUrl)
                     }
                 }
                 
-                return users
+                return urls
             } catch {
                 print("Couldn't retrieve User values!")
             }
         }
         return []
+    }
+    
+    func deleteAvatar(url: String) {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<UserEntity>(entityName: "UserEntity")
+            
+            do {
+                let results = try context.fetch(fetchRequest)
+                
+                for result in results {
+                    if result.url == url {
+                        context.delete(result)
+                    }
+                }
+                
+                try context.save()
+            } catch {
+                print("Couldn't delete Avatar!")
+            }
+        }
     }
 }

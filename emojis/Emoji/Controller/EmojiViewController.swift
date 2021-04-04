@@ -10,7 +10,8 @@ import RxSwift
 import Kingfisher
 
 protocol EmojiProtocol: class {
-    func emojiList()
+    func emojisList()
+    func avatarsList()
 }
 
 class EmojiViewController: UIViewController, Storyboarded {
@@ -31,6 +32,8 @@ class EmojiViewController: UIViewController, Storyboarded {
     
     private func setSearchBar() {
         searchBar.autocapitalizationType = .none
+        searchBar.searchTextField.backgroundColor = .white
+        
     }
     
     private func getObservable() {
@@ -54,7 +57,7 @@ class EmojiViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func emojiListButton(_ sender: UIButton) {
-        coordinator?.emojiList()
+        coordinator?.emojisList()
     }
     
     @IBAction func randomEmojiButton(_ sender: UIButton) {
@@ -70,6 +73,10 @@ class EmojiViewController: UIViewController, Storyboarded {
                 print("Error: User not found")
             }
         })
+    }
+    
+    @IBAction func avatarsListButton(_ sender: UIButton) {
+        coordinator?.avatarsList()
     }
 }
 
