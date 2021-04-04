@@ -7,17 +7,17 @@
 import RxSwift
 
 protocol EmojiViewModelProtocol {
-    var emoji: PublishSubject<[String:String]> { get set }
+    var emoji: PublishSubject<EmojiType> { get set }
     func getEmojis()
 }
 
 class EmojiViewModel: EmojiViewModelProtocol {
-    var emoji: PublishSubject<[String:String]>
+    var emoji: PublishSubject<EmojiType>
     
     init() {
         print("EmojiViewModel - INITIALIZATION")
         
-        emoji = PublishSubject<[String:String]>()
+        emoji = PublishSubject<EmojiType>()
     }
     
     deinit {

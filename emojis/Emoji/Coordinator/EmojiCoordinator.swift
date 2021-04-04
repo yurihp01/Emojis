@@ -28,3 +28,12 @@ class EmojiCoordinator: Coordinator {
         navigationController.popViewController(animated: true)
     }
 }
+
+extension EmojiCoordinator: EmojiProtocol {
+    func emojiList() {
+        let coordinator = EmojiListCoordinator(navigationController)
+        coordinator.parentCoordinator = self
+        add(childCoordinator: coordinator)
+        coordinator.start()
+    }
+}

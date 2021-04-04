@@ -16,7 +16,7 @@ class AppCoordinator: Coordinator {
     
     init() {
         navigationController = UINavigationController()
-        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.barTintColor = #colorLiteral(red: 0.3050227463, green: 0.3966548443, blue: 0.6912810802, alpha: 1)
     }
     
     func start() {

@@ -8,6 +8,8 @@
 import UIKit
 import CoreData
 
+typealias EmojiType = [String:String]
+
 final class EmojiCoreData {
 
     static let shared = EmojiCoreData()
@@ -31,7 +33,7 @@ final class EmojiCoreData {
         }
     }
     
-    func retrieveValues() -> [String:String] {
+    func retrieveValues() -> EmojiType {
         if let appDelegate = UIApplication.shared
             .delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
@@ -40,7 +42,7 @@ final class EmojiCoreData {
             do {
                 let results = try context.fetch(fetchRequest)
                 
-                var emoji: [String:String] = [:]
+                var emoji: EmojiType = [:]
                 for result in results {
                     if let link = result.link, let name = result.name {
                         print("Name: \(name) - link: \(link)\n")

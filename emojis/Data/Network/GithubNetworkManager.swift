@@ -13,10 +13,10 @@ struct GithubNetworkManager {
     
     private let provider = MoyaProvider<GithubService>()
     
-    func getEmojis() -> Single<[String:String]> {
+    func getEmojis() -> Single<EmojiType> {
         provider.rx.request(.emoji)
             .filterSuccessfulStatusAndRedirectCodes()
-            .map([String:String].self)
+            .map(EmojiType.self)
             
     }
 }

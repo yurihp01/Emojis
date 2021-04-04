@@ -16,31 +16,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBe-IO-gcx">
-                                <rect key="frame" x="6" y="832" width="402" height="30"/>
+                                <rect key="frame" x="24" y="311" width="366" height="30"/>
                                 <color key="backgroundColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="RANDOM EMOJI">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="getEmojiButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X76-WZ-j3N"/>
+                                    <action selector="randomEmojiButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X76-WZ-j3N"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nFP-dC-mLB">
-                                <rect key="frame" x="87" y="604" width="240" height="129"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nFP-dC-mLB">
+                                <rect key="frame" x="87" y="84" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="9IB-Ze-sub"/>
                                     <constraint firstAttribute="width" constant="240" id="Q9T-sr-V9m"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSk-dw-Clt">
+                                <rect key="frame" x="24" y="353" width="366" height="30"/>
+                                <color key="backgroundColor" red="0.66659259800000004" green="0.66670930390000005" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="EMOJI LIST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emojiListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EJd-xW-reE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.24075669050000001" green="0.34270846840000002" blue="0.70423918959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iBe-IO-gcx" secondAttribute="bottom" id="KLc-0q-JOq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iBe-IO-gcx" secondAttribute="trailing" constant="6" id="MgV-eM-8Qn"/>
+                            <constraint firstItem="nFP-dC-mLB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="J9E-dJ-rto"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iBe-IO-gcx" secondAttribute="trailing" constant="24" id="MgV-eM-8Qn"/>
+                            <constraint firstItem="sSk-dw-Clt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="RsB-IA-aMl"/>
+                            <constraint firstItem="sSk-dw-Clt" firstAttribute="top" secondItem="iBe-IO-gcx" secondAttribute="bottom" constant="12" id="Yzt-ti-yuv"/>
                             <constraint firstItem="nFP-dC-mLB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cDC-V1-elS"/>
                             <constraint firstItem="iBe-IO-gcx" firstAttribute="top" secondItem="nFP-dC-mLB" secondAttribute="bottom" constant="99" id="l5T-Ko-v45"/>
-                            <constraint firstItem="iBe-IO-gcx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="6" id="s0E-gK-6fc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sSk-dw-Clt" secondAttribute="trailing" constant="24" id="m0I-u3-TRX"/>
+                            <constraint firstItem="iBe-IO-gcx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="s0E-gK-6fc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -52,7 +65,4 @@
             <point key="canvasLocation" x="45" y="89"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-    </resources>
 </document>
