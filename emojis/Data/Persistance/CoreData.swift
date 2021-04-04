@@ -14,11 +14,11 @@ final class CoreData {
 
     static let shared = CoreData()
     
-    func saveUser(login: String, url: String, id: Int) {
+    func saveAvatar(login: String, url: String, id: Int) {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
             
-            guard let entityDescription = NSEntityDescription.entity(forEntityName: "UserEntity", in: context) else { return }
+            guard let entityDescription = NSEntityDescription.entity(forEntityName: "AvatarEntity", in: context) else { return }
             
             let user = NSManagedObject(entity: entityDescription, insertInto: context)
             user.setValue(login, forKey: "login")
@@ -77,21 +77,21 @@ final class CoreData {
         return [:]
     }
     
-    func retrieveUser(login: String) -> User? {
+    func retrieveAvatar(login: String) -> Avatar? {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<UserEntity>(entityName: "UserEntity")
+            let fetchRequest = NSFetchRequest<AvatarEntity>(entityName: "AvatarEntity")
             
             do {
                 let results = try context.fetch(fetchRequest)
 
                 guard let user = results.first(where: {
                     $0.login == login
-                }).map({ User(login: $0.login ?? "", avatarUrl: $0.url ?? "", id: Int($0.id)) }) else { return nil }
+                }).map({ Avatar(login: $0.login ?? "", avatarUrl: $0.url ?? "", id: Int($0.id)) }) else { return nil }
                 
                 return user
             } catch {
-                print("Couldn't retrieve User values!")
+                print("Couldn't retrieve Avatar values!")
             }
         }
         return nil
@@ -100,7 +100,7 @@ final class CoreData {
     func retrieveAvatarsUrl() -> [String] {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<UserEntity>(entityName: "UserEntity")
+            let fetchRequest = NSFetchRequest<AvatarEntity>(entityName: "AvatarEntity")
             
             do {
                 let results = try context.fetch(fetchRequest)
@@ -115,7 +115,7 @@ final class CoreData {
                 
                 return urls
             } catch {
-                print("Couldn't retrieve User values!")
+                print("Couldn't retrieve Avatar values!")
             }
         }
         return []
@@ -124,7 +124,7 @@ final class CoreData {
     func deleteAvatar(url: String) {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<UserEntity>(entityName: "UserEntity")
+            let fetchRequest = NSFetchRequest<AvatarEntity>(entityName: "AvatarEntity")
             
             do {
                 let results = try context.fetch(fetchRequest)

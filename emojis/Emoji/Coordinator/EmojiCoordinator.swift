@@ -44,4 +44,10 @@ extension EmojiCoordinator: EmojiProtocol {
         coordinator.start()
     }
     
+    func reposList() {
+        let coordinator = ReposCoordinator(with: navigationController)
+        coordinator.parentCoordinator = self
+        add(childCoordinator: coordinator)
+        coordinator.start()
+    }
 }

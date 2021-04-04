@@ -10,7 +10,7 @@ import Moya
 
 enum GithubService {
     case emoji
-    case user(username: String)
+    case avatar(username: String, page: Int? = nil, size: Int? = nil)
 }
 
 extension GithubService: TargetType {
@@ -18,7 +18,7 @@ extension GithubService: TargetType {
         switch self {
         case .emoji:
             return .get
-        case .user(_):
+        case .avatar(_, _, _):
             return .get
         }
     }
@@ -31,8 +31,12 @@ extension GithubService: TargetType {
         switch self {
         case .emoji:
             return "/emojis"
-        case .user(let username):
-            return"/users/\(username)"
+        case .avatar(let username, let page, let size):
+            if page != nil, size != nil {
+                return"/users/\(username)/repos"
+            } else {
+                return"/users/\(username)"
+            }
         }
     }
     
@@ -41,7 +45,21 @@ extension GithubService: TargetType {
     }
     
     var task: Task {
-        .requestPlain
+        switch self {
+        case .emoji:
+            return .requestPlain
+        case .avatar(_, let page, let size):
+            if let page = page, let size = size {
+                
+                // I used per_page instead of size because it returns how many values I want, while size is 30 per request
+                return .requestParameters(parameters: [
+                    "per_page": size,
+                    "page": page
+                ], encoding: URLEncoding.queryString)
+            } else {
+                return .requestPlain
+            }   
+        }
     }
     
     var headers: [String : String]? {

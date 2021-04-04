@@ -10,6 +10,12 @@
 		360E0EF426BD7CB438218D04 /* Pods_emojisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E70094AC9B3FC400E50DB26 /* Pods_emojisTests.framework */; };
 		AFEDC64C684FB7DC699FE161 /* Pods_emojis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823546A24CCBBA5DF648ED0D /* Pods_emojis.framework */; };
 		BD592D1A4746C6FB2B63637F /* Pods_emojis_emojisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8671914C8F21BFBFD88EE4E6 /* Pods_emojis_emojisUITests.framework */; };
+		FA60D9AA2619FB63008D04BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60D9A92619FB63008D04BD /* SceneDelegate.swift */; };
+		FA60D9B52619FF33008D04BD /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60D9B42619FF33008D04BD /* Repo.swift */; };
+		FA60D9C0261A0959008D04BD /* Repos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA60D9BF261A0959008D04BD /* Repos.storyboard */; };
+		FA60D9C5261A0A25008D04BD /* ReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60D9C4261A0A25008D04BD /* ReposViewController.swift */; };
+		FA60D9CD261A0ABB008D04BD /* ReposCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60D9CC261A0ABB008D04BD /* ReposCoordinator.swift */; };
+		FA60D9D2261A0ACD008D04BD /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60D9D1261A0ACD008D04BD /* ReposViewModel.swift */; };
 		FA6CF69E26177E7E00FFBFF6 /* Emojis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF69C26177E7E00FFBFF6 /* Emojis.xcdatamodeld */; };
 		FA6CF6E726178B6200FFBFF6 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF6E626178B6200FFBFF6 /* CoreData.swift */; };
 		FA6CF7212618B28F00FFBFF6 /* EmojiListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF7202618B28F00FFBFF6 /* EmojiListCoordinator.swift */; };
@@ -17,7 +23,7 @@
 		FA6CF7302618B45600FFBFF6 /* EmojiListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF72F2618B45600FFBFF6 /* EmojiListViewModel.swift */; };
 		FA6CF7422618BA9700FFBFF6 /* EmojiList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6CF7412618BA9700FFBFF6 /* EmojiList.storyboard */; };
 		FA6CF7582618CB3000FFBFF6 /* EmojiListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF7572618CB3000FFBFF6 /* EmojiListCell.swift */; };
-		FA6CF7722619619600FFBFF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF7712619619600FFBFF6 /* User.swift */; };
+		FA6CF7722619619600FFBFF6 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF7712619619600FFBFF6 /* Avatar.swift */; };
 		FA6CF78926198FD100FFBFF6 /* Avatar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6CF78826198FD100FFBFF6 /* Avatar.storyboard */; };
 		FA6CF78E2619902200FFBFF6 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF78D2619902200FFBFF6 /* AvatarViewController.swift */; };
 		FA6CF793261990FE00FFBFF6 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CF792261990FE00FFBFF6 /* AvatarCell.swift */; };
@@ -66,6 +72,12 @@
 		CF8301E98E3C670489F33B4C /* Pods-emojisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojisTests.debug.xcconfig"; path = "Target Support Files/Pods-emojisTests/Pods-emojisTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE65EB9CCF06AD2618F0C020 /* Pods-emojis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojis.release.xcconfig"; path = "Target Support Files/Pods-emojis/Pods-emojis.release.xcconfig"; sourceTree = "<group>"; };
 		E0AB9D43E518E0A6392D2F7C /* Pods-emojis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojis.debug.xcconfig"; path = "Target Support Files/Pods-emojis/Pods-emojis.debug.xcconfig"; sourceTree = "<group>"; };
+		FA60D9A92619FB63008D04BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FA60D9B42619FF33008D04BD /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		FA60D9BF261A0959008D04BD /* Repos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Repos.storyboard; sourceTree = "<group>"; };
+		FA60D9C4261A0A25008D04BD /* ReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewController.swift; sourceTree = "<group>"; };
+		FA60D9CC261A0ABB008D04BD /* ReposCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCoordinator.swift; sourceTree = "<group>"; };
+		FA60D9D1261A0ACD008D04BD /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
 		FA6CF69D26177E7E00FFBFF6 /* Emojis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Emojis.xcdatamodel; sourceTree = "<group>"; };
 		FA6CF6E626178B6200FFBFF6 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		FA6CF7202618B28F00FFBFF6 /* EmojiListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiListCoordinator.swift; sourceTree = "<group>"; };
@@ -73,7 +85,7 @@
 		FA6CF72F2618B45600FFBFF6 /* EmojiListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiListViewModel.swift; sourceTree = "<group>"; };
 		FA6CF7412618BA9700FFBFF6 /* EmojiList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmojiList.storyboard; sourceTree = "<group>"; };
 		FA6CF7572618CB3000FFBFF6 /* EmojiListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiListCell.swift; sourceTree = "<group>"; };
-		FA6CF7712619619600FFBFF6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA6CF7712619619600FFBFF6 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		FA6CF78826198FD100FFBFF6 /* Avatar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Avatar.storyboard; sourceTree = "<group>"; };
 		FA6CF78D2619902200FFBFF6 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		FA6CF792261990FE00FFBFF6 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
@@ -152,6 +164,49 @@
 				0E70094AC9B3FC400E50DB26 /* Pods_emojisTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA60D9B9261A08ED008D04BD /* ReposList */ = {
+			isa = PBXGroup;
+			children = (
+				FA60D9BB261A0917008D04BD /* Controller */,
+				FA60D9BA261A090E008D04BD /* Coordinator */,
+				FA60D9BC261A0931008D04BD /* View */,
+				FA60D9BD261A0937008D04BD /* ViewModel */,
+			);
+			path = ReposList;
+			sourceTree = "<group>";
+		};
+		FA60D9BA261A090E008D04BD /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				FA60D9CC261A0ABB008D04BD /* ReposCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		FA60D9BB261A0917008D04BD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA60D9C4261A0A25008D04BD /* ReposViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FA60D9BC261A0931008D04BD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA60D9BF261A0959008D04BD /* Repos.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA60D9BD261A0937008D04BD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FA60D9D1261A0ACD008D04BD /* ReposViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FA6CF6E426178A9600FFBFF6 /* Data */ = {
@@ -299,8 +354,10 @@
 				FA6CF78326198F8200FFBFF6 /* Avatar */,
 				FA81613A2614F51700A85A6F /* Emoji */,
 				FA6CF7182618B1E200FFBFF6 /* EmojiList */,
+				FA60D9B9261A08ED008D04BD /* ReposList */,
 				FA8161212614E3F500A85A6F /* Base */,
 				FA8160E62614BC5000A85A6F /* AppDelegate.swift */,
+				FA60D9A92619FB63008D04BD /* SceneDelegate.swift */,
 				FA6CF69C26177E7E00FFBFF6 /* Emojis.xcdatamodeld */,
 				FA8160EF2614BC5300A85A6F /* Assets.xcassets */,
 			);
@@ -382,7 +439,8 @@
 		FA81613D2614F55300A85A6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA6CF7712619619600FFBFF6 /* User.swift */,
+				FA6CF7712619619600FFBFF6 /* Avatar.swift */,
+				FA60D9B42619FF33008D04BD /* Repo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -528,6 +586,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA60D9C0261A0959008D04BD /* Repos.storyboard in Resources */,
 				FA8160F32614BC5300A85A6F /* LaunchScreen.storyboard in Resources */,
 				FA8160F02614BC5300A85A6F /* Assets.xcassets in Resources */,
 				FA8160EE2614BC5000A85A6F /* Emoji.storyboard in Resources */,
@@ -661,16 +720,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8161252614E47E00A85A6F /* Coordinator.swift in Sources */,
+				FA60D9CD261A0ABB008D04BD /* ReposCoordinator.swift in Sources */,
+				FA60D9D2261A0ACD008D04BD /* ReposViewModel.swift in Sources */,
 				FA6CF7302618B45600FFBFF6 /* EmojiListViewModel.swift in Sources */,
 				FA6CF7AB2619949E00FFBFF6 /* AvatarCoordinator.swift in Sources */,
 				FA6CF6E726178B6200FFBFF6 /* CoreData.swift in Sources */,
 				FA6CF69E26177E7E00FFBFF6 /* Emojis.xcdatamodeld in Sources */,
 				FA81615F2614FFB900A85A6F /* EmojiViewModel.swift in Sources */,
 				FA6CF78E2619902200FFBFF6 /* AvatarViewController.swift in Sources */,
+				FA60D9AA2619FB63008D04BD /* SceneDelegate.swift in Sources */,
 				FA8161492614F66F00A85A6F /* GithubService.swift in Sources */,
+				FA60D9B52619FF33008D04BD /* Repo.swift in Sources */,
 				FA6CF79E2619925300FFBFF6 /* AvatarViewModel.swift in Sources */,
 				FA8160EB2614BC5000A85A6F /* EmojiViewController.swift in Sources */,
-				FA6CF7722619619600FFBFF6 /* User.swift in Sources */,
+				FA60D9C5261A0A25008D04BD /* ReposViewController.swift in Sources */,
+				FA6CF7722619619600FFBFF6 /* Avatar.swift in Sources */,
 				FA81616C2615123F00A85A6F /* GithubNetworkManager.swift in Sources */,
 				FA6CF7262618B2F800FFBFF6 /* EmojiListViewController.swift in Sources */,
 				FA81612D2614E68000A85A6F /* AppCoordinator.swift in Sources */,

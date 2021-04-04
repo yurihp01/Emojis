@@ -78,5 +78,9 @@ class EmojiViewController: UIViewController, Storyboarded {
     @IBAction func avatarsListButton(_ sender: UIButton) {
         coordinator?.avatarsList()
     }
+    
+    @IBAction func appleRepositories(_ sender: UIButton) {
+        coordinator?.reposList()
+    }
 }
 
