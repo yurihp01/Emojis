@@ -29,12 +29,12 @@ final class GithubNetworkManager: GithubNetworkManagerProtocol {
             case .success(let response):
                 do {
                     let emoji = try JSONDecoder().decode(EmojiType.self, from: response.data)
-                    completion(emoji, nil)
+                    response.statusCode == 200 ? completion(emoji, nil) : completion(nil, GithubError.notFound)
                 } catch {
-                    completion(nil, error)
+                    completion(nil, GithubError.jsonMapping)
                 }
-            case .failure(let error):
-                completion(nil, error)
+            case .failure:
+                completion(nil, GithubError.internetConnection)
             }
         }
     }
@@ -45,12 +45,12 @@ final class GithubNetworkManager: GithubNetworkManagerProtocol {
             case .success(let response):
                 do {
                     let avatar = try JSONDecoder().decode(Avatar.self, from: response.data)
-                    completion(avatar, nil)
+                    response.statusCode == 200 ? completion(avatar, nil) : completion(nil, GithubError.notFound)
                 } catch {
-                    completion(nil, error)
+                    completion(nil, GithubError.jsonMapping)
                 }
-            case .failure(let error):
-                completion(nil, error)
+            case .failure:
+                completion(nil, GithubError.internetConnection)
             }
         }
     }
@@ -61,12 +61,12 @@ final class GithubNetworkManager: GithubNetworkManagerProtocol {
             case .success(let response):
                 do {
                     let repos = try JSONDecoder().decode([Repo].self, from: response.data)
-                    completion(repos, nil)
+                    response.statusCode == 200 ? completion(repos, nil) : completion(nil, GithubError.notFound)
                 } catch {
-                    completion(nil, error)
+                    completion(nil, GithubError.jsonMapping)
                 }
-            case .failure(let error):
-                completion(nil, error)
+            case .failure:
+                completion(nil, GithubError.internetConnection)
             }
         }
     }

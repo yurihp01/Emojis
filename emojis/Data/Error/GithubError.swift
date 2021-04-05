@@ -9,13 +9,19 @@ import Foundation
 
 enum GithubError: Error {
     case notFound
+    case jsonMapping
+    case internetConnection
 }
 
 extension GithubError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .notFound:
-            return "Not Found"
+            return "Emojis Not Found. Contact with your app administrator."
+        case .jsonMapping:
+            return "Failed to map data to JSON object. Contact with your app administrator."
+        case .internetConnection:
+            return "The internet connection appers to be offline. Check your connection and try again."
         }
     }
 }
