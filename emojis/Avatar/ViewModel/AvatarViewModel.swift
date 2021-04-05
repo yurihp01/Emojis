@@ -8,8 +8,8 @@
 import UIKit
 
 protocol AvatarViewModelProtocol {
-    func getAvatarUrls(completion: ([String]) -> Void)
-    func deleteAvatar(url: String)
+    func getAvatarUrls(completion: ([String]?, Error?) -> Void)
+    func deleteAvatar(url: String, completion: (Error?) -> Void)
 }
 
 class AvatarViewModel: AvatarViewModelProtocol {
@@ -22,12 +22,21 @@ class AvatarViewModel: AvatarViewModelProtocol {
         print("DEINIT - AvatarViewModel")
     }
     
-    func getAvatarUrls(completion: ([String]) -> Void) {
-        let urls = CoreData.shared.retrieveAvatarsUrl()
-        completion(urls)
+    func getAvatarUrls(completion: ([String]?, Error?) -> Void) {
+        do {
+            let urls = try EmojisCoreData.shared.retrieveAvatarsUrl()
+            completion(urls, nil)
+        } catch {
+            completion(nil, error)
+        }
     }
     
-    func deleteAvatar(url: String) {
-        CoreData.shared.deleteAvatar(url: url)
+    func deleteAvatar(url: String, completion: (Error?) -> Void) {
+        do {
+            try EmojisCoreData.shared.deleteAvatar(url: url)
+            completion(nil)
+        } catch {
+            completion(error)
+        }
     }
 }

@@ -29,7 +29,9 @@ final class GithubNetworkManager: GithubNetworkManagerProtocol {
             case .success(let response):
                 do {
                     let emoji = try JSONDecoder().decode(EmojiType.self, from: response.data)
-                    response.statusCode == 200 ? completion(emoji, nil) : completion(nil, GithubError.notFound)
+                    
+                    // I needed to check the status code later because the response returns the same type for both. So, if its code is 200, it returns the emoji, otherwise, the error.
+                    response.statusCode == 200 ? completion(emoji, nil) : completion(nil, GithubError.notFound(name: "Emoji"))
                 } catch {
                     completion(nil, GithubError.jsonMapping)
                 }
@@ -44,8 +46,12 @@ final class GithubNetworkManager: GithubNetworkManagerProtocol {
             switch result {
             case .success(let response):
                 do {
-                    let avatar = try JSONDecoder().decode(Avatar.self, from: response.data)
-                    response.statusCode == 200 ? completion(avatar, nil) : completion(nil, GithubError.notFound)
+                    if response.statusCode == 200 {
+                        let avatar = try JSONDecoder().decode(Avatar.self, from: response.data)
+                        completion(avatar, nil)
+                    } else {
+                        completion(nil, GithubError.notFound(name: "Avatar"))
+                    }
                 } catch {
                     completion(nil, GithubError.jsonMapping)
                 }
@@ -60,8 +66,12 @@ final class GithubNetworkManager: GithubNetworkManagerProtocol {
             switch result {
             case .success(let response):
                 do {
-                    let repos = try JSONDecoder().decode([Repo].self, from: response.data)
-                    response.statusCode == 200 ? completion(repos, nil) : completion(nil, GithubError.notFound)
+                    if response.statusCode == 200 {
+                        let repos = try JSONDecoder().decode([Repo].self, from: response.data)
+                        completion(repos, nil)
+                    } else {
+                        completion(nil, GithubError.notFound(name: "Repos"))
+                    }
                 } catch {
                     completion(nil, GithubError.jsonMapping)
                 }

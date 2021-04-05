@@ -16,7 +16,7 @@ protocol EmojiProtocol: class {
 final class EmojiViewController: BaseViewController {
     @IBOutlet weak var emojiImage: UIImageView!
     @IBOutlet weak var searchBar: UISearchBar!
-        
+    
     weak var coordinator: EmojiCoordinator?
     var viewModel: EmojiViewModelProtocol?
     var emoji: [String] = []
@@ -43,10 +43,10 @@ final class EmojiViewController: BaseViewController {
                 if let value = emoji.first(where: { $0.key == key })?.value {
                     self?.setImageView(url: URL(string: value))
                 } else {
-                    print(GithubError.notFound.localizedDescription)
+                    self?.showAlert(error: error)
                 }
             } else {
-                print(GithubError.notFound.localizedDescription)
+                self?.showAlert(error: error)
             }
         })
     }
@@ -76,7 +76,7 @@ final class EmojiViewController: BaseViewController {
                 guard let url = user.url else { return }
                 self?.emojiImage.kf.setImage(with: url)
             } else {
-                print("Error: User not found")
+                self?.showAlert(error: error)
             }
         })
     }

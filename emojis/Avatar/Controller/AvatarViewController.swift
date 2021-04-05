@@ -29,9 +29,13 @@ final class AvatarViewController: BaseViewController {
     }
     
     private func getAvatars() {
-        viewModel?.getAvatarUrls(completion: { (urls) in
-            self.avatarUrls = urls
-            collectionView.reloadData()
+        viewModel?.getAvatarUrls(completion: { (urls, error) in
+            if let urls = urls {
+                self.avatarUrls = urls
+                collectionView.reloadData()
+            } else {
+                showAlert(error: error)
+            }
         })
     }
 }
@@ -46,17 +50,22 @@ extension AvatarViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? AvatarCell, !avatarUrls.isEmpty else {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? BaseCollectionViewCell, !avatarUrls.isEmpty, let url = URL(string: avatarUrls[indexPath.row]) {
+            cell.initialize(url: url)
+            return cell
+        } else {
             return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         }
-        
-        cell.setImageView(url: URL(string: avatarUrls[indexPath.row]))
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.deleteAvatar(url: avatarUrls[indexPath.row])
-        avatarUrls.remove(at: indexPath.row)
-        getAvatars()
+        viewModel?.deleteAvatar(url: avatarUrls[indexPath.row]) { error in
+            if error == nil {
+                avatarUrls.remove(at: indexPath.row)
+                getAvatars()
+            } else {
+                showAlert(error: error)
+            }
+        }
     }
 }

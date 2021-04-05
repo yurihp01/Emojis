@@ -13,28 +13,32 @@ protocol EmojiListViewModelProtocol {
 
 class EmojiListViewModel: EmojiListViewModelProtocol {
     init() {
-        print("INIT - EmojiListViewController")
+        print("INIT - EmojiListViewModel")
     }
     
     deinit {
-        print("INIT - EmojiListViewController")
+        print("DEINIT - EmojiListViewModel")
     }
     
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void) {
-        let retrievedEmoji = CoreData.shared.retrieveEmoji()
-        if retrievedEmoji.isEmpty {
-            GithubNetworkManager.shared.getEmojis(completion: { (emoji, error) in
-                if let emoji = emoji {
-                    emoji.forEach({
-                        CoreData.shared.saveEmoji(name: $0.key, link: $0.value)
-                    })
-                    completion(emoji, nil)
-                } else {
-                    completion(nil, error)
-                }
-            })
-        } else {
-            completion(retrievedEmoji, nil)
+        do {
+            let retrievedEmoji = try EmojisCoreData.shared.retrieveEmoji()
+            if retrievedEmoji.isEmpty {
+                GithubNetworkManager.shared.getEmojis(completion: { (emoji, error) in
+                    if let emoji = emoji {
+                        emoji.forEach({
+                            try? EmojisCoreData.shared.saveEmoji(name: $0.key, link: $0.value)
+                        })
+                        completion(emoji, nil)
+                    } else {
+                        completion(nil, error)
+                    }
+                })
+            } else {
+                completion(retrievedEmoji, nil)
+            }
+        } catch {
+            completion(nil, error)
         }
     }
 }

@@ -43,7 +43,7 @@ final class EmojiListViewController: BaseViewController {
                 self?.emoji = emoji.map({ $0.value })
                 self?.collectionView.reloadData()
             } else {
-                print(error?.localizedDescription ?? "")
+                self?.showAlert(error: error)
             }
         })
     }
@@ -65,12 +65,12 @@ extension EmojiListViewController: UICollectionViewDelegateFlowLayout, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? EmojiListCell, !emoji.isEmpty else {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? BaseCollectionViewCell, !emoji.isEmpty, let url = URL(string: emoji[indexPath.row]) {
+            cell.initialize(url: url)
+            return cell
+        } else {
             return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         }
-        
-        cell.setImageView(url: URL(string: emoji[indexPath.row]))
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

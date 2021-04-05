@@ -23,4 +23,10 @@ class BaseViewController: UIViewController, Storyboarded {
         
         view.addSubview(indicator)
     }
+    
+    func showAlert(error: Error?) {
+        guard let error = error else { return }
+        let alert = UIAlertController.showAlertDialog(title: "Error 🥺", message: error.localizedDescription)
+        self.present(alert, animated: true, completion: nil)
+    }
 }

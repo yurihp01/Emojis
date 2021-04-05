@@ -15,46 +15,55 @@ class EmojiViewModel: EmojiViewModelProtocol {
     let githubManager: GithubNetworkManagerProtocol
     
     init() {
-        print("EmojiViewModel - INITIALIZATION")
-        
         githubManager = GithubNetworkManager.shared
+        print("INIT - EmojiViewModel")
     }
     
     deinit {
-        print("EmojiViewModel - DEINITIALIZATION")
+        print("DEINIT - EmojiViewModel")
     }
     
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void) {
-        let retrievedEmoji = CoreData.shared.retrieveEmoji()
-        if retrievedEmoji.isEmpty {
-            GithubNetworkManager.shared.getEmojis(completion: { (emoji, error) in
-                if let emoji = emoji {
-                    emoji.forEach({
-                        CoreData.shared.saveEmoji(name: $0.key, link: $0.value)
-                    })
-                    completion(emoji, nil)
-                } else {
-                    completion(nil, error)
-                }
-            })
-        } else {
-            completion(retrievedEmoji, nil)
+        do {
+            let retrievedEmoji = try EmojisCoreData.shared.retrieveEmoji()
+            if retrievedEmoji.isEmpty {
+                GithubNetworkManager.shared.getEmojis(completion: { (emoji, error) in
+                    if let emoji = emoji {
+                        emoji.forEach({
+                                try? EmojisCoreData.shared.saveEmoji(name: $0.key, link: $0.value)
+                        })
+                        completion(emoji, nil)
+                    } else {
+                        completion(nil, error)
+                    }
+                })
+            } else {
+                completion(retrievedEmoji, nil)
+            }
+        } catch {
+            completion(nil, error)
         }
+        
+        
     }
     
     func getUser(login: String, completion: @escaping (Avatar?, Error?) -> Void) {
-        let retrievedAvatar = CoreData.shared.retrieveAvatar(login: login)
-        if retrievedAvatar == nil {
-            githubManager.getAvatarByUsername(username: login) { (avatar, error) in
-                if let avatar = avatar {
-                    CoreData.shared.saveAvatar(login: avatar.login, url: avatar.avatarUrl, id: avatar.id)
-                    completion(avatar, nil)
-                } else {
-                    completion(nil, error)
+        do {
+            let retrievedAvatar = try EmojisCoreData.shared.retrieveAvatar(login: login)
+            if retrievedAvatar == nil {
+                githubManager.getAvatarByUsername(username: login) { (avatar, error) in
+                    if let avatar = avatar {
+                        try? EmojisCoreData.shared.saveAvatar(login: avatar.login, url: avatar.avatarUrl, id: avatar.id)
+                        completion(avatar, nil)
+                    } else {
+                        completion(nil, error)
+                    }
                 }
             }
+            completion(retrievedAvatar, nil)
+        } catch {
+            completion(nil, error)
         }
-        completion(retrievedAvatar, nil)
     }
     
     

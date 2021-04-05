@@ -10,11 +10,11 @@ import CoreData
 
 typealias EmojiType = [String:String]
 
-final class CoreData {
+final class EmojisCoreData {
 
-    static let shared = CoreData()
+    static let shared = EmojisCoreData()
     
-    func saveAvatar(login: String, url: String, id: Int) {
+    func saveAvatar(login: String, url: String, id: Int) throws {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
             
@@ -27,14 +27,13 @@ final class CoreData {
             
             do {
                 try context.save()
-                print("User Saved")
             } catch {
-                print("Error saving User")
+                throw CoreDataError.save
             }
         }
     }
     
-    func saveEmoji(name:String, link: String) {
+    func saveEmoji(name:String, link: String) throws {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
             
@@ -47,12 +46,12 @@ final class CoreData {
             do {
                 try context.save()
             } catch {
-                print("Error")
+                throw CoreDataError.save
             }
         }
     }
     
-    func retrieveEmoji() -> EmojiType {
+    func retrieveEmoji() throws -> EmojiType {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
             let fetchRequest = NSFetchRequest<Emoji>(entityName: "Emoji")
@@ -64,19 +63,18 @@ final class CoreData {
                 for result in results {
                     if let link = result.link, let name = result.name {
                         emoji[name] = link
-                        print("Name: \(name) - link: \(link)\n")
                     }
                 }
                 
                 return emoji
             } catch {
-                print("Couldn't retrieve Emoji values!")
+                throw CoreDataError.retrieve
             }
         }
         return [:]
     }
     
-    func retrieveAvatar(login: String) -> Avatar? {
+    func retrieveAvatar(login: String) throws -> Avatar? {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
             let fetchRequest = NSFetchRequest<AvatarEntity>(entityName: "AvatarEntity")
@@ -90,13 +88,13 @@ final class CoreData {
                 
                 return user
             } catch {
-                print("Couldn't retrieve Avatar values!")
+                throw CoreDataError.retrieve
             }
         }
         return nil
     }
     
-    func retrieveAvatarsUrl() -> [String] {
+    func retrieveAvatarsUrl() throws -> [String] {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
             let fetchRequest = NSFetchRequest<AvatarEntity>(entityName: "AvatarEntity")
@@ -114,13 +112,13 @@ final class CoreData {
                 
                 return urls
             } catch {
-                print("Couldn't retrieve Avatar values!")
+                throw CoreDataError.retrieve
             }
         }
         return []
     }
     
-    func deleteAvatar(url: String) {
+    func deleteAvatar(url: String) throws {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
             let fetchRequest = NSFetchRequest<AvatarEntity>(entityName: "AvatarEntity")
@@ -136,7 +134,7 @@ final class CoreData {
                 
                 try context.save()
             } catch {
-                print("Couldn't delete Avatar!")
+                throw CoreDataError.delete
             }
         }
     }

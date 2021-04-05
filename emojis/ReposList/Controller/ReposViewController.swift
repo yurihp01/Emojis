@@ -37,7 +37,7 @@ final class ReposViewController: BaseViewController {
                 self?.repos = repos
                 self?.tableView.reloadData()
             } else {
-                print("Error: \(error?.localizedDescription)")
+                self?.showAlert(error: error)
             }
         })
     }
