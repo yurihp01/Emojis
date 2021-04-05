@@ -4,23 +4,19 @@
 //
 //  Created by Yuri Pedroso on 31/03/21.
 //
-import RxSwift
+import Foundation
 
 protocol EmojiViewModelProtocol {
-    var emoji: PublishSubject<EmojiType> { get set }
-    func getEmojis()
+    func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void)
     func getUser(login: String, completion: @escaping (Avatar?, Error?) -> Void)
 }
 
 class EmojiViewModel: EmojiViewModelProtocol {
-    var emoji: PublishSubject<EmojiType>
-    
     let githubManager: GithubNetworkManagerProtocol
     
     init() {
         print("EmojiViewModel - INITIALIZATION")
         
-        emoji = PublishSubject<EmojiType>()
         githubManager = GithubNetworkManager.shared
     }
     
@@ -28,19 +24,21 @@ class EmojiViewModel: EmojiViewModelProtocol {
         print("EmojiViewModel - DEINITIALIZATION")
     }
     
-    func getEmojis() {
+    func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void) {
         let retrievedEmoji = CoreData.shared.retrieveEmoji()
         if retrievedEmoji.isEmpty {
-            githubManager.getEmojis()
-                .subscribe(onSuccess: { response in
-                    response.forEach {
+            GithubNetworkManager.shared.getEmojis(completion: { (emoji, error) in
+                if let emoji = emoji {
+                    emoji.forEach({
                         CoreData.shared.saveEmoji(name: $0.key, link: $0.value)
-                    }
-                }, onError: { [weak self] error in
-                        self?.emoji.onError(error)
-                }).disposed(by: DisposeBag())
+                    })
+                    completion(emoji, nil)
+                } else {
+                    completion(nil, error)
+                }
+            })
         }
-        self.emoji.onNext(retrievedEmoji)
+        completion(retrievedEmoji, nil)
     }
     
     func getUser(login: String, completion: @escaping (Avatar?, Error?) -> Void) {

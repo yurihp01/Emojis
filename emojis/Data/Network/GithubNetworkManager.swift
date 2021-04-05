@@ -5,12 +5,11 @@
 //  Created by Yuri Pedroso on 31/03/21.
 //
 
-import RxSwift
 import Moya
 
 protocol GithubNetworkManagerProtocol {
     func getAvatarByUsername(username: String, completion: @escaping (Avatar?, Error?) -> Void)
-    func getEmojis() -> Single<EmojiType>
+    func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void)
     func getRepos(page: Int, completion: @escaping ([Repo]?, Error?) -> Void)
 }
 
@@ -24,10 +23,20 @@ final class GithubNetworkManager: GithubNetworkManagerProtocol {
     
     private init() {}
 
-    func getEmojis() -> Single<EmojiType> {
-        provider.rx.request(.emoji)
-            .filterSuccessfulStatusAndRedirectCodes()
-            .map(EmojiType.self)
+    func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void) {
+        provider.request(.emoji) { (result) in
+            switch result {
+            case .success(let response):
+                do {
+                    let emoji = try JSONDecoder().decode(EmojiType.self, from: response.data)
+                    completion(emoji, nil)
+                } catch {
+                    completion(nil, error)
+                }
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
     }
     
     func getAvatarByUsername(username: String, completion: @escaping (Avatar?, Error?) -> Void) {
@@ -38,7 +47,7 @@ final class GithubNetworkManager: GithubNetworkManagerProtocol {
                     let avatar = try JSONDecoder().decode(Avatar.self, from: response.data)
                     completion(avatar, nil)
                 } catch {
-                    print(error)
+                    completion(nil, error)
                 }
             case .failure(let error):
                 completion(nil, error)

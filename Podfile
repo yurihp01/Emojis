@@ -6,7 +6,7 @@ target 'emojis' do
   use_frameworks!
 
   # Pods for emojis
-  pod 'Moya/RxSwift', '~> 14.0'
+  pod 'Moya', '~> 14.0'
   pod 'Kingfisher', '~> 6.0'
 
   target 'emojisTests' do

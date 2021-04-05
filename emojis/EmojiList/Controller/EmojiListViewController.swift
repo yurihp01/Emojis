@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RxSwift
 
 class EmojiListViewController: UIViewController, Storyboarded {
     
@@ -24,18 +23,7 @@ class EmojiListViewController: UIViewController, Storyboarded {
 
         getEmojis()
         setCollectionView()
-//        getObservable()
-        // Do any additional setup after loading the view.
     }
-    
-//    private func getObservable() {
-//        viewModel?.emoji.subscribe(onNext: { [weak self] (emoji) in
-//            self?.emoji = emoji.map({ $0.value })
-//            self?.collectionView.reloadData()
-//        }, onError: { (error) in
-//            print(error.localizedDescription)
-//        }).disposed(by: DisposeBag())
-//    }
     
     private func setCollectionView() {
         collectionView.dataSource = self
@@ -47,9 +35,13 @@ class EmojiListViewController: UIViewController, Storyboarded {
     }
     
     private func getEmojis() {
-        viewModel?.getEmojis(completion: { (emoji, error) in
-            guard let emoji = emoji else { return }
-            self.emoji = emoji.map({ $0.value })
+        viewModel?.getEmojis(completion: { [weak self] (emoji, error) in
+            if let emoji = emoji {
+                self?.emoji = emoji.map({ $0.value })
+                self?.collectionView.reloadData()
+            } else {
+                print(error?.localizedDescription ?? "")
+            }
         })
     }
     
@@ -63,7 +55,7 @@ class EmojiListViewController: UIViewController, Storyboarded {
 extension EmojiListViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return emoji.count
+        return emoji.isEmpty ? 0 : emoji.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
