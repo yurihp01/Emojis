@@ -27,8 +27,8 @@
                                     <action selector="randomEmojiButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X76-WZ-j3N"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bicycle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nFP-dC-mLB">
-                                <rect key="frame" x="67.5" y="40.5" width="240" height="127"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nFP-dC-mLB">
+                                <rect key="frame" x="67.5" y="40" width="240" height="128"/>
                                 <color key="tintColor" systemColor="systemPinkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="9IB-Ze-sub"/>
@@ -121,7 +121,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bicycle" catalog="system" width="128" height="78"/>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

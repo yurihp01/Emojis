@@ -23,24 +23,17 @@ final class EmojiViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSearchBar()
+        setSearchBarAndIndicator()
+        getRandomImage()
     }
     
-    private func setSearchBar() {
+    private func setSearchBarAndIndicator() {
         searchBar.autocapitalizationType = .none
         searchBar.searchTextField.backgroundColor = .white
+        indicator.color = .black
     }
     
-    private func setImage(url: String) {
-        let url = URL(string: url)
-        emojiImage.kf.setImage(with: url)
-    }
-    
-    @IBAction func emojiListButton(_ sender: UIButton) {
-        coordinator?.emojisList()
-    }
-    
-    @IBAction func randomEmojiButton(_ sender: UIButton) {
+    private func getRandomImage() {
         indicator.startAnimating()
         viewModel?.getEmojis(completion: { [weak self] (emoji, error) in
             self?.indicator.stopAnimating()
@@ -48,7 +41,7 @@ final class EmojiViewController: BaseViewController {
             if let emoji = emoji {
                 let key = emoji.keys.randomElement()
                 if let value = emoji.first(where: { $0.key == key })?.value {
-                    self?.setImage(url: value)
+                    self?.setImageView(url: URL(string: value))
                 } else {
                     print(GithubError.notFound.localizedDescription)
                 }
@@ -56,6 +49,20 @@ final class EmojiViewController: BaseViewController {
                 print(GithubError.notFound.localizedDescription)
             }
         })
+    }
+
+    private func setImageView(url: URL?) {
+        guard let url = url else { print("URL not found"); return }
+        emojiImage.kf.indicatorType = .activity
+        emojiImage.kf.setImage(with: url, options: [.transition(.fade(0.2)), .cacheOriginalImage, .fromMemoryCacheOrRefresh, .onFailureImage(.remove)])
+    }
+    
+    @IBAction func emojiListButton(_ sender: UIButton) {
+        coordinator?.emojisList()
+    }
+    
+    @IBAction func randomEmojiButton(_ sender: UIButton) {
+        getRandomImage()
     }
     
     @IBAction func searchUserButton(_ sender: UIButton) {

@@ -14,9 +14,8 @@ class EmojiListCell: UICollectionViewCell {
     
     func setImageView(url: URL?) {
         guard let url = url else { print("URL not found"); return }
-        let processor = RoundCornerImageProcessor(cornerRadius: 20)
         emojiImage.kf.indicatorType = .activity
-        emojiImage.kf.setImage(with: url, options: [.transition(.fade(0.2)), .cacheOriginalImage, .fromMemoryCacheOrRefresh, .onFailureImage(.remove), .processor(processor)])
+        emojiImage.kf.setImage(with: url, options: [.transition(.fade(0.2)), .cacheOriginalImage, .fromMemoryCacheOrRefresh, .onFailureImage(.remove)])
         setImageViewLayerProperties()
     }
     
