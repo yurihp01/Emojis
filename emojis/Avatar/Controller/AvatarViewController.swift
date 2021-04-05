@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AvatarViewController: UIViewController, Storyboarded {
+final class AvatarViewController: BaseViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     

@@ -10,6 +10,7 @@
 		360E0EF426BD7CB438218D04 /* Pods_emojisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E70094AC9B3FC400E50DB26 /* Pods_emojisTests.framework */; };
 		AFEDC64C684FB7DC699FE161 /* Pods_emojis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823546A24CCBBA5DF648ED0D /* Pods_emojis.framework */; };
 		BD592D1A4746C6FB2B63637F /* Pods_emojis_emojisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8671914C8F21BFBFD88EE4E6 /* Pods_emojis_emojisUITests.framework */; };
+		FA252C1A261B350D00D4559C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA252C19261B350D00D4559C /* BaseViewController.swift */; };
 		FA60D9AA2619FB63008D04BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60D9A92619FB63008D04BD /* SceneDelegate.swift */; };
 		FA60D9B52619FF33008D04BD /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60D9B42619FF33008D04BD /* Repo.swift */; };
 		FA60D9C0261A0959008D04BD /* Repos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA60D9BF261A0959008D04BD /* Repos.storyboard */; };
@@ -72,6 +73,7 @@
 		CF8301E98E3C670489F33B4C /* Pods-emojisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojisTests.debug.xcconfig"; path = "Target Support Files/Pods-emojisTests/Pods-emojisTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE65EB9CCF06AD2618F0C020 /* Pods-emojis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojis.release.xcconfig"; path = "Target Support Files/Pods-emojis/Pods-emojis.release.xcconfig"; sourceTree = "<group>"; };
 		E0AB9D43E518E0A6392D2F7C /* Pods-emojis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emojis.debug.xcconfig"; path = "Target Support Files/Pods-emojis/Pods-emojis.debug.xcconfig"; sourceTree = "<group>"; };
+		FA252C19261B350D00D4559C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FA60D9A92619FB63008D04BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FA60D9B42619FF33008D04BD /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		FA60D9BF261A0959008D04BD /* Repos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Repos.storyboard; sourceTree = "<group>"; };
@@ -164,6 +166,22 @@
 				0E70094AC9B3FC400E50DB26 /* Pods_emojisTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA252C15261B34F900D4559C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA252C19261B350D00D4559C /* BaseViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FA252C1E261B362400D4559C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FA8160EF2614BC5300A85A6F /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		FA60D9B9261A08ED008D04BD /* ReposList */ = {
@@ -356,10 +374,10 @@
 				FA6CF7182618B1E200FFBFF6 /* EmojiList */,
 				FA60D9B9261A08ED008D04BD /* ReposList */,
 				FA8161212614E3F500A85A6F /* Base */,
+				FA252C1E261B362400D4559C /* Resource */,
 				FA8160E62614BC5000A85A6F /* AppDelegate.swift */,
 				FA60D9A92619FB63008D04BD /* SceneDelegate.swift */,
 				FA6CF69C26177E7E00FFBFF6 /* Emojis.xcdatamodeld */,
-				FA8160EF2614BC5300A85A6F /* Assets.xcassets */,
 			);
 			path = emojis;
 			sourceTree = "<group>";
@@ -385,6 +403,7 @@
 		FA8161212614E3F500A85A6F /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				FA252C15261B34F900D4559C /* Controller */,
 				FA8161502614F92A00A85A6F /* View */,
 				FA8161222614E40200A85A6F /* Coordinator */,
 			);
@@ -724,6 +743,7 @@
 				FA60D9D2261A0ACD008D04BD /* ReposViewModel.swift in Sources */,
 				FA6CF7302618B45600FFBFF6 /* EmojiListViewModel.swift in Sources */,
 				FA6CF7AB2619949E00FFBFF6 /* AvatarCoordinator.swift in Sources */,
+				FA252C1A261B350D00D4559C /* BaseViewController.swift in Sources */,
 				FA6CF6E726178B6200FFBFF6 /* CoreData.swift in Sources */,
 				FA6CF69E26177E7E00FFBFF6 /* Emojis.xcdatamodeld in Sources */,
 				FA81615F2614FFB900A85A6F /* EmojiViewModel.swift in Sources */,

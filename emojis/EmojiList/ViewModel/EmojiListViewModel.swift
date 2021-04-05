@@ -33,7 +33,8 @@ class EmojiListViewModel: EmojiListViewModelProtocol {
                     completion(nil, error)
                 }
             })
+        } else {
+            completion(retrievedEmoji, nil)
         }
-        completion(retrievedEmoji, nil)
     }
 }

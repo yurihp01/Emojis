@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReposViewController: UIViewController, Storyboarded {
+final class ReposViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     

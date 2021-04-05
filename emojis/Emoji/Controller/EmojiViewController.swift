@@ -13,7 +13,7 @@ protocol EmojiProtocol: class {
     func avatarsList()
 }
 
-class EmojiViewController: UIViewController, Storyboarded {
+final class EmojiViewController: BaseViewController {
     @IBOutlet weak var emojiImage: UIImageView!
     @IBOutlet weak var searchBar: UISearchBar!
         
@@ -41,11 +41,17 @@ class EmojiViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func randomEmojiButton(_ sender: UIButton) {
+        indicator.startAnimating()
         viewModel?.getEmojis(completion: { [weak self] (emoji, error) in
-            guard let emoji = emoji else { return }
-            let key = emoji.keys.randomElement()
-            if let value = emoji.first(where: { $0.key == key })?.value {
-                self?.setImage(url: value)
+            self?.indicator.stopAnimating()
+            
+            if let emoji = emoji {
+                let key = emoji.keys.randomElement()
+                if let value = emoji.first(where: { $0.key == key })?.value {
+                    self?.setImage(url: value)
+                } else {
+                    print(GithubError.notFound.localizedDescription)
+                }
             } else {
                 print(GithubError.notFound.localizedDescription)
             }
@@ -53,7 +59,10 @@ class EmojiViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func searchUserButton(_ sender: UIButton) {
+        indicator.startAnimating()
         viewModel?.getUser(login: searchBar.text ?? "", completion: { [weak self] (user, error) in
+            self?.indicator.stopAnimating()
+            
             if let user = user {
                 guard let url = user.url else { return }
                 self?.emojiImage.kf.setImage(with: url)

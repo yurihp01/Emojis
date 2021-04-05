@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmojiListViewController: UIViewController, Storyboarded {
+final class EmojiListViewController: BaseViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -20,22 +20,25 @@ class EmojiListViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         getEmojis()
-        setCollectionView()
+        setViews()
     }
     
-    private func setCollectionView() {
+    private func setViews() {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
         collectionView.refreshControl = refreshControl
         
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        refreshControl.tintColor = .white
     }
     
     private func getEmojis() {
+        indicator.startAnimating()
+        
         viewModel?.getEmojis(completion: { [weak self] (emoji, error) in
+            self?.indicator.stopAnimating()
             if let emoji = emoji {
                 self?.emoji = emoji.map({ $0.value })
                 self?.collectionView.reloadData()

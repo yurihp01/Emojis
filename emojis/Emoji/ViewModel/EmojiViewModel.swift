@@ -37,8 +37,9 @@ class EmojiViewModel: EmojiViewModelProtocol {
                     completion(nil, error)
                 }
             })
+        } else {
+            completion(retrievedEmoji, nil)
         }
-        completion(retrievedEmoji, nil)
     }
     
     func getUser(login: String, completion: @escaping (Avatar?, Error?) -> Void) {

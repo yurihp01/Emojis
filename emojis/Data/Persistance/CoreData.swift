@@ -46,7 +46,6 @@ final class CoreData {
             
             do {
                 try context.save()
-                print("Saved")
             } catch {
                 print("Error")
             }
