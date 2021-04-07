@@ -23,7 +23,7 @@ struct Avatar {
     }
 }
 
-extension Avatar: Decodable {
+extension Avatar: Codable {
     enum CodingKeys: String, CodingKey {
         case avatarUrl = "avatar_url"
         case login

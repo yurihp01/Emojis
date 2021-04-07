@@ -8,14 +8,16 @@ import Foundation
 
 protocol EmojiViewModelProtocol {
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void)
-    func getUser(login: String, completion: @escaping (Avatar?, Error?) -> Void)
+    func getAvatar(login: String, completion: @escaping (Avatar?, Error?) -> Void)
 }
 
 class EmojiViewModel: EmojiViewModelProtocol {
-    let githubManager: GithubNetworkManagerProtocol
+    var githubManager: GithubNetworkManagerProtocol
+    var coreData: EmojisCoreDataProtocol
     
     init() {
         githubManager = GithubNetworkManager.shared
+        coreData = EmojisCoreData()
         print("INIT - EmojiViewModel")
     }
     
@@ -25,12 +27,12 @@ class EmojiViewModel: EmojiViewModelProtocol {
     
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void) {
         do {
-            let retrievedEmoji = try EmojisCoreData.shared.retrieveEmoji()
+            let retrievedEmoji = try coreData.retrieveEmoji()
             if retrievedEmoji.isEmpty {
-                GithubNetworkManager.shared.getEmojis(completion: { (emoji, error) in
+                githubManager.getEmojis(completion: { [weak self] (emoji, error) in
                     if let emoji = emoji {
                         emoji.forEach({
-                                try? EmojisCoreData.shared.saveEmoji(name: $0.key, link: $0.value)
+                          try? self?.coreData.saveEmoji(name: $0.key, link: $0.value)
                         })
                         completion(emoji, nil)
                     } else {
@@ -47,20 +49,21 @@ class EmojiViewModel: EmojiViewModelProtocol {
         
     }
     
-    func getUser(login: String, completion: @escaping (Avatar?, Error?) -> Void) {
+    func getAvatar(login: String, completion: @escaping (Avatar?, Error?) -> Void) {
         do {
-            let retrievedAvatar = try EmojisCoreData.shared.retrieveAvatar(login: login)
+            let retrievedAvatar = try coreData.retrieveAvatar(login: login)
             if retrievedAvatar == nil {
-                githubManager.getAvatarByUsername(username: login) { (avatar, error) in
+                githubManager.getAvatarByUsername(username: login) { [weak self] (avatar, error) in
                     if let avatar = avatar {
-                        try? EmojisCoreData.shared.saveAvatar(login: avatar.login, url: avatar.avatarUrl, id: avatar.id)
+                      try? self?.coreData.saveAvatar(login: avatar.login, url: avatar.avatarUrl, id: avatar.id)
                         completion(avatar, nil)
                     } else {
                         completion(nil, error)
                     }
                 }
+            } else {
+                completion(retrievedAvatar, nil)
             }
-            completion(retrievedAvatar, nil)
         } catch {
             completion(nil, error)
         }

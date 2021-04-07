@@ -10,7 +10,16 @@ import CoreData
 
 typealias EmojiType = [String:String]
 
-final class EmojisCoreData {
+protocol EmojisCoreDataProtocol {
+    func saveAvatar(login: String, url: String, id: Int) throws
+    func saveEmoji(name:String, link: String) throws
+    func retrieveEmoji() throws -> EmojiType
+    func retrieveAvatar(login: String) throws -> Avatar?
+    func retrieveAvatarsUrl() throws -> [String]
+    func deleteAvatar(url: String) throws
+}
+
+final class EmojisCoreData: EmojisCoreDataProtocol {
 
     static let shared = EmojisCoreData()
     

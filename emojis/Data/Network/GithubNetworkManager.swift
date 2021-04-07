@@ -19,7 +19,7 @@ fileprivate let size = 10
 final class GithubNetworkManager: GithubNetworkManagerProtocol {
     static let shared = GithubNetworkManager()
     
-    private let provider = MoyaProvider<GithubService>()
+    var provider = MoyaProvider<GithubService>()
     
     private init() {}
 

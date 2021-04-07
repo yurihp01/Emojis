@@ -2,7 +2,7 @@
 //  emojisUITests.swift
 //  emojisUITests
 //
-//  Created by Macbook on 31/03/21.
+//  Created by Yuri Pedroso on 05/04/21.
 //
 
 import XCTest

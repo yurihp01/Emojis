@@ -29,7 +29,7 @@ final class AvatarViewController: BaseViewController {
     }
     
     private func getAvatars() {
-        viewModel?.getAvatarUrls(completion: { (urls, error) in
+        viewModel?.getAvatarsUrl(completion: { (urls, error) in
             if let urls = urls {
                 self.avatarUrls = urls
                 collectionView.reloadData()
@@ -49,7 +49,6 @@ extension AvatarViewController: UICollectionViewDelegateFlowLayout, UICollection
     func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? BaseCollectionViewCell, !avatarUrls.isEmpty, let url = URL(string: avatarUrls[indexPath.row]) {
             cell.initialize(url: url)
             return cell

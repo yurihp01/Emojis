@@ -11,7 +11,7 @@ final class ReposViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel: ReposViewModel?
+    var viewModel: ReposViewModelProtocol?
     var repos: [String] = []
     var currentPage = 1
     var refreshControl = UIRefreshControl()
@@ -31,7 +31,7 @@ final class ReposViewController: BaseViewController {
         tableView.backgroundColor = #colorLiteral(red: 0.2407566905, green: 0.3427084684, blue: 0.7042391896, alpha: 1)
     }
 
-    private func getRepos() {
+    func getRepos() {
         viewModel?.getRepos(page: currentPage, completion: { [weak self] (repos, error) in
             if let repos = repos {
                 self?.repos = repos

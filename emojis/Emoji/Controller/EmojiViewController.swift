@@ -67,7 +67,7 @@ final class EmojiViewController: BaseViewController {
     
     @IBAction func searchUserButton(_ sender: UIButton) {
         indicator.startAnimating()
-        viewModel?.getUser(login: searchBar.text ?? "", completion: { [weak self] (user, error) in
+        viewModel?.getAvatar(login: searchBar.text ?? "", completion: { [weak self] (user, error) in
             self?.indicator.stopAnimating()
             self?.searchBar.text = ""
             self?.searchBar.resignFirstResponder()

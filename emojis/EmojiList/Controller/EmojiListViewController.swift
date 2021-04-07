@@ -16,7 +16,7 @@ final class EmojiListViewController: BaseViewController {
     var viewModel: EmojiListViewModelProtocol?
     weak var coordinator: EmojiListCoordinator?
     
-    private let refreshControl = UIRefreshControl()
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()

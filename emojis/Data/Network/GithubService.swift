@@ -33,15 +33,28 @@ extension GithubService: TargetType {
             return "/emojis"
         case .avatar(let username, let page, let size):
             if page != nil, size != nil {
-                return"/users/\(username)/repos"
+                return "/users/\(username)/repos"
             } else {
-                return"/users/\(username)"
+                return "/users/\(username)"
             }
         }
     }
     
     var sampleData: Data {
-        Data()
+        switch self {
+        case .emoji:
+            return ["image":"image.com"].jsonStringRepresentation?.data(using: .utf8) ?? Data()
+        case .avatar(_, let page, let size):
+            do {
+                if page != nil, size != nil {
+                    return try JSONEncoder().encode([Repo(id: 0, fullName: "Apple", privateRep: true)])
+                } else {
+                    return try JSONEncoder().encode(Avatar(login: "Yuri", avatarUrl: "yuri.com", id: 1))
+                }
+            } catch {
+                return Data()
+            }
+        }
     }
     
     var task: Task {

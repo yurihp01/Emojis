@@ -12,7 +12,7 @@ protocol ReposViewModelProtocol {
 }
 
 class ReposViewModel: ReposViewModelProtocol {
-    let githubNetwork: GithubNetworkManagerProtocol
+    var githubNetwork: GithubNetworkManagerProtocol
     
     init() {
         print("INIT - ReposViewModel")

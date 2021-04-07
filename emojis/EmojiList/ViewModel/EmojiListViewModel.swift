@@ -12,8 +12,15 @@ protocol EmojiListViewModelProtocol {
 }
 
 class EmojiListViewModel: EmojiListViewModelProtocol {
+    
+    var networkManager: GithubNetworkManagerProtocol
+    var coreData: EmojisCoreDataProtocol
+    
     init() {
         print("INIT - EmojiListViewModel")
+        
+        coreData = EmojisCoreData.shared
+        networkManager = GithubNetworkManager.shared
     }
     
     deinit {
@@ -22,12 +29,12 @@ class EmojiListViewModel: EmojiListViewModelProtocol {
     
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void) {
         do {
-            let retrievedEmoji = try EmojisCoreData.shared.retrieveEmoji()
+            let retrievedEmoji = try coreData.retrieveEmoji()
             if retrievedEmoji.isEmpty {
-                GithubNetworkManager.shared.getEmojis(completion: { (emoji, error) in
+                networkManager.getEmojis(completion: { [weak self] (emoji, error) in
                     if let emoji = emoji {
                         emoji.forEach({
-                            try? EmojisCoreData.shared.saveEmoji(name: $0.key, link: $0.value)
+                            try? self?.coreData.saveEmoji(name: $0.key, link: $0.value)
                         })
                         completion(emoji, nil)
                     } else {
