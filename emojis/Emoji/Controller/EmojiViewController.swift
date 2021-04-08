@@ -33,7 +33,7 @@ final class EmojiViewController: BaseViewController {
         indicator.color = .black
     }
     
-    private func getRandomImage() {
+    func getRandomImage() {
         indicator.startAnimating()
         viewModel?.getEmojis(completion: { [weak self] (emoji, error) in
             self?.indicator.stopAnimating()
@@ -51,7 +51,7 @@ final class EmojiViewController: BaseViewController {
         })
     }
 
-    private func setImageView(url: URL?) {
+    func setImageView(url: URL?) {
         guard let url = url else { print("URL not found"); return }
         emojiImage.kf.indicatorType = .activity
         emojiImage.kf.setImage(with: url, options: [.transition(.fade(0.2)), .cacheOriginalImage, .fromMemoryCacheOrRefresh, .onFailureImage(.remove)])

@@ -11,59 +11,98 @@ import CoreData
 @testable import emojis
 
 class MockCoreData: EmojisCoreDataProtocol {
+    
+    enum Status {
+        case success
+        case saveError
+        case deleteError
+        case retrieveError
+    }
+    
+    let status: Status
+    
+    init(status: Status) {
+        self.status = status
+    }
+    
     var avatars: [Avatar] = []
     var emoji: EmojiType = [:]
     
     func saveAvatar(login: String, url: String, id: Int) throws {
-        avatars.append(Avatar(login: login, avatarUrl: url, id: id))
+        switch status {
+        case .success:
+            avatars.append(Avatar(login: login, avatarUrl: url, id: id))
+        case .deleteError:
+            throw CoreDataError.delete
+        case .retrieveError:
+            throw CoreDataError.retrieve
+        case .saveError:
+            throw CoreDataError.save
+        }
     }
     
     func saveEmoji(name: String, link: String) throws {
-        emoji[name] = link
+        switch status {
+        case .success:
+            emoji[name] = link
+        case .deleteError:
+            throw CoreDataError.delete
+        case .retrieveError:
+            throw CoreDataError.retrieve
+        case .saveError:
+            throw CoreDataError.save
+        }
     }
     
     func retrieveEmoji() throws -> EmojiType {
-        return emoji
+        switch status {
+        case .success:
+            return emoji
+        case .deleteError:
+            throw CoreDataError.delete
+        case .retrieveError:
+            throw CoreDataError.retrieve
+        case .saveError:
+            throw CoreDataError.save
+        }
     }
     
     func retrieveAvatar(login: String) throws -> Avatar? {
-        avatars.first(where: { $0.login == login })
+        switch status {
+        case .success:
+            return avatars.first(where: { $0.login == login })
+        case .deleteError:
+            throw CoreDataError.delete
+        case .retrieveError:
+            throw CoreDataError.retrieve
+        case .saveError:
+            throw CoreDataError.save
+        }
     }
     
     func retrieveAvatarsUrl() throws -> [String] {
-        avatars.compactMap({ $0.avatarUrl })
+        switch status {
+        case .success:
+            return avatars.compactMap({ $0.avatarUrl })
+        case .deleteError:
+            throw CoreDataError.delete
+        case .retrieveError:
+            throw CoreDataError.retrieve
+        case .saveError:
+            throw CoreDataError.save
+        }
     }
     
     func deleteAvatar(url: String) throws {
-        avatars.removeAll(where: { $0.avatarUrl == url })
-    }
-}
-
-class MockCoreDataError: EmojisCoreDataProtocol {
-    var avatars: [Avatar] = []
-    var emoji: EmojiType = [:]
-    
-    func saveAvatar(login: String, url: String, id: Int) throws {
-        throw CoreDataError.save
-    }
-    
-    func saveEmoji(name: String, link: String) throws {
-        throw CoreDataError.save
-    }
-    
-    func retrieveEmoji() throws -> EmojiType {
-        throw CoreDataError.retrieve
-    }
-    
-    func retrieveAvatar(login: String) throws -> Avatar? {
-        throw CoreDataError.retrieve
-    }
-    
-    func retrieveAvatarsUrl() throws -> [String] {
-        throw CoreDataError.retrieve
-    }
-    
-    func deleteAvatar(url: String) throws {
-        throw CoreDataError.delete
+        switch status {
+        case .success:
+            return avatars.removeAll(where: { $0.avatarUrl == url })
+        case .deleteError:
+            throw CoreDataError.delete
+        case .retrieveError:
+            throw CoreDataError.retrieve
+        case .saveError:
+            throw CoreDataError.save
+        }
     }
 }

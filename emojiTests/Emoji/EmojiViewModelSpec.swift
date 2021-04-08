@@ -18,8 +18,8 @@ class EmojiViewModelSpec: QuickSpec {
             
             beforeEach {
                 sut = EmojiViewModel()
-                sut.coreData = MockCoreData()
-                sut.githubManager = MockNetworkManager()
+                sut.coreData = MockCoreData(status: .success)
+                sut.githubManager = GithubNetworkManagerMock(status: .success)
             }
             
             afterEach {
@@ -27,22 +27,41 @@ class EmojiViewModelSpec: QuickSpec {
             }
             
             context("Get Emojis") {
-
+                
                 it("Get Emojis") {
                     sut.getEmojis { (emoji, error) in
                         expect(emoji).toNot(beNil())
-                        expect(emoji?.first?.key).to(equal("smile"))
-                        expect(emoji?.first?.value).to(equal("smile.com"))
+                        expect(emoji?.first?.key).to(equal("Emoji"))
                     }
                 }
                 
-                it("Get Emojis With Error") {
-                    sut.githubManager = MockNetworkManagerError()
-
+                it("Get Emojis With Internet Connection Error") {
+                    sut.githubManager = GithubNetworkManagerMock(status: .internetConnection)
+                    
                     sut.getEmojis { (emoji, error) in
                         expect(emoji).to(beNil())
                         expect(error).toNot(beNil())
-                        expect(error?.localizedDescription).to(equal("Emojis not found. Contact with your app administrator."))
+                        expect(error?.localizedDescription).to(equal(GithubError.internetConnection.errorDescription))
+                    }
+                }
+                
+                it("Get Emojis With JSON Mapping Error") {
+                    sut.githubManager = GithubNetworkManagerMock(status: .jsonMapping)
+                    
+                    sut.getEmojis { (emoji, error) in
+                        expect(emoji).to(beNil())
+                        expect(error).toNot(beNil())
+                        expect(error?.localizedDescription).to(equal(GithubError.jsonMapping.errorDescription))
+                    }
+                }
+                
+                it("Get Emojis With Not Found Error") {
+                    sut.githubManager = GithubNetworkManagerMock(status: .notFound(name: "Emojis"))
+                    
+                    sut.getEmojis { (emoji, error) in
+                        expect(emoji).to(beNil())
+                        expect(error).toNot(beNil())
+                        expect(error?.localizedDescription).to(equal(GithubError.notFound(name: "Emojis").errorDescription))
                     }
                 }
                 
@@ -56,15 +75,33 @@ class EmojiViewModelSpec: QuickSpec {
                     }
                 }
                 
-                it("Get Emojis With Error From CoreData") {
-                    sut.coreData = MockCoreDataError()
-
-                    expect(try sut.coreData.saveEmoji(name: "Emoji", link: "emoji.com")).to(throwError(CoreDataError.save))
+                it("Get Emojis With Delete Error From CoreData") {
+                    sut.coreData = MockCoreData(status: .deleteError)
                     
                     sut.getEmojis { (emoji, error) in
                         expect(emoji).to(beNil())
                         expect(error).toNot(beNil())
-                        expect(error?.localizedDescription).to(equal("An error occurred while retrieving data. Check with your app administrator and try again."))
+                        expect(error?.localizedDescription).to(equal(CoreDataError.delete.errorDescription))
+                    }
+                }
+                
+                it("Get Emojis With Save Error From CoreData") {
+                    sut.coreData = MockCoreData(status: .saveError)
+                    
+                    sut.getEmojis { (emoji, error) in
+                        expect(emoji).to(beNil())
+                        expect(error).toNot(beNil())
+                        expect(error?.localizedDescription).to(equal(CoreDataError.save.errorDescription))
+                    }
+                }
+                
+                it("Get Emojis With Retrieve Error From CoreData") {
+                    sut.coreData = MockCoreData(status: .retrieveError)
+                    
+                    sut.getEmojis { (emoji, error) in
+                        expect(emoji).to(beNil())
+                        expect(error).toNot(beNil())
+                        expect(error?.localizedDescription).to(equal(CoreDataError.retrieve.errorDescription))
                     }
                 }
             }
@@ -75,17 +112,37 @@ class EmojiViewModelSpec: QuickSpec {
                     sut.getAvatar(login: "apple") { (avatar, error) in
                         expect(error).to(beNil())
                         expect(avatar).toNot(beNil())
-                        expect(avatar?.avatarUrl).to(equal("avatar.com"))
+                        expect(avatar?.avatarUrl).to(equal("Avatar"))
                     }
                 }
                 
-                it("Get Avatar With Error") {
-                    sut.githubManager = MockNetworkManagerError()
-
+                it("Get Avatar With Not Found Error") {
+                    sut.githubManager = GithubNetworkManagerMock(status: .notFound(name: "Avatar"))
+                    
                     sut.getAvatar(login: "avatar") { (avatar, error) in
                         expect(avatar).to(beNil())
                         expect(error).toNot(beNil())
                         expect(error?.localizedDescription).to(equal("Avatar not found. Contact with your app administrator."))
+                    }
+                }
+                
+                it("Get Emojis With Internet Connection Error") {
+                    sut.githubManager = GithubNetworkManagerMock(status: .internetConnection)
+                    
+                    sut.getAvatar(login: "avatar") { (avatar, error) in
+                        expect(avatar).to(beNil())
+                        expect(error).toNot(beNil())
+                        expect(error?.localizedDescription).to(equal("The internet connection appears to be offline. Check your connection and try again."))
+                    }
+                }
+                
+                it("Get Emojis With JSON Mapping Error") {
+                    sut.githubManager = GithubNetworkManagerMock(status: .jsonMapping)
+                    
+                    sut.getEmojis { (emoji, error) in
+                        expect(emoji).to(beNil())
+                        expect(error).toNot(beNil())
+                        expect(error?.localizedDescription).to(equal("Failed to map data to JSON object. Contact with your app administrator."))
                     }
                 }
                 
@@ -97,15 +154,33 @@ class EmojiViewModelSpec: QuickSpec {
                     expect(avatar).toNot(beNil())
                 }
                 
-                it("Get Avatar With Error From CoreData") {
-                    sut.coreData = MockCoreDataError()
-
-                    expect(try sut.coreData.saveEmoji(name: "Emoji", link: "emoji.com")).to(throwError(CoreDataError.save))
+                it("Get Emojis With Delete Error From CoreData") {
+                    sut.coreData = MockCoreData(status: .deleteError)
                     
                     sut.getAvatar(login: "Avatar") { (avatar, error) in
                         expect(avatar).to(beNil())
                         expect(error).toNot(beNil())
-                        expect(error?.localizedDescription).to(equal("An error occurred while retrieving data. Check with your app administrator and try again."))
+                        expect(error?.localizedDescription).to(equal(CoreDataError.delete.localizedDescription))
+                    }
+                }
+                
+                it("Get Emojis With Save Error From CoreData") {
+                    sut.coreData = MockCoreData(status: .saveError)
+                    
+                    sut.getAvatar(login: "Avatar") { (avatar, error) in
+                        expect(avatar).to(beNil())
+                        expect(error).toNot(beNil())
+                        expect(error?.localizedDescription).to(equal(CoreDataError.save.localizedDescription))
+                    }
+                }
+                
+                it("Get Emojis With Retrieve Error From CoreData") {
+                    sut.coreData = MockCoreData(status: .retrieveError)
+                    
+                    sut.getAvatar(login: "Avatar") { (avatar, error) in
+                        expect(avatar).to(beNil())
+                        expect(error).toNot(beNil())
+                        expect(error?.localizedDescription).to(equal(CoreDataError.retrieve.localizedDescription))
                     }
                 }
             }
