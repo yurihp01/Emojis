@@ -17,8 +17,9 @@ class AvatarViewModel: AvatarViewModelProtocol {
     var coreData: EmojisCoreDataProtocol
     
     init() {
-        print("INIT - AvatarViewModel")
         coreData = EmojisCoreData.shared
+        
+        print("INIT - AvatarViewModel")
     }
     
     deinit {

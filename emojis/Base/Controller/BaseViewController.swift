@@ -13,7 +13,7 @@ class BaseViewController: UIViewController, Storyboarded {
       let percent = view.bounds.height - view.bounds.height * 0.2
       let indicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x - 24, y: percent, width: 40, height: 40))
         indicator.color = .white
-        indicator.style = .large
+        indicator.style = .whiteLarge
         indicator.hidesWhenStopped = true
         return indicator
     }()
@@ -23,10 +23,10 @@ class BaseViewController: UIViewController, Storyboarded {
         
         view.addSubview(indicator)
     }
-    
-    func showAlert(error: Error?) {
-        guard let error = error else { return }
-        let alert = UIAlertController.showAlertDialog(title: "Error 🥺", message: error.localizedDescription)
+  
+    func showAlert(message: String?) {
+      guard let message = message else { return }
+        let alert = UIAlertController.showAlertDialog(title: "Error 🥺", message: message)
         self.present(alert, animated: true, completion: nil)
     }
 }

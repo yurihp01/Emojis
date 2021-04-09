@@ -11,12 +11,11 @@ final class EmojiListViewController: BaseViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var emoji: [String] = []
+    let refreshControl = UIRefreshControl()
     
+    var emoji: [String] = []
     var viewModel: EmojiListViewModelProtocol?
     weak var coordinator: EmojiListCoordinator?
-    
-    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,16 +38,17 @@ final class EmojiListViewController: BaseViewController {
         
         viewModel?.getEmojis(completion: { [weak self] (emoji, error) in
             self?.indicator.stopAnimating()
+            
             if let emoji = emoji {
                 self?.emoji = emoji.map({ $0.value })
                 self?.collectionView.reloadData()
             } else {
-                self?.showAlert(error: error)
+                self?.showAlert(message: error?.localizedDescription)
             }
         })
     }
     
-    @objc func didPullToRefresh(_ sender: Any) {
+    @objc private func didPullToRefresh(_ sender: Any) {
         refreshControl.endRefreshing()
         getEmojis()
         collectionView.reloadData()

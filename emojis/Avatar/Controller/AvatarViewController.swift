@@ -34,7 +34,7 @@ final class AvatarViewController: BaseViewController {
                 self.avatarUrls = urls
                 collectionView.reloadData()
             } else {
-                showAlert(error: error)
+                showAlert(message: error?.localizedDescription)
             }
         })
     }
@@ -63,7 +63,7 @@ extension AvatarViewController: UICollectionViewDelegateFlowLayout, UICollection
                 avatarUrls.remove(at: indexPath.row)
                 getAvatars()
             } else {
-                showAlert(error: error)
+                showAlert(message: error?.localizedDescription)
             }
         }
     }

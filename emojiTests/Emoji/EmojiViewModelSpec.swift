@@ -19,7 +19,7 @@ class EmojiViewModelSpec: QuickSpec {
             beforeEach {
                 sut = EmojiViewModel()
                 sut.coreData = MockCoreData(status: .success)
-                sut.githubManager = GithubNetworkManagerMock(status: .success)
+                sut.networkManager = GithubNetworkManagerMock(status: .success)
             }
             
             afterEach {
@@ -36,7 +36,7 @@ class EmojiViewModelSpec: QuickSpec {
                 }
                 
                 it("Get Emojis With Internet Connection Error") {
-                    sut.githubManager = GithubNetworkManagerMock(status: .internetConnection)
+                    sut.networkManager = GithubNetworkManagerMock(status: .internetConnection)
                     
                     sut.getEmojis { (emoji, error) in
                         expect(emoji).to(beNil())
@@ -46,7 +46,7 @@ class EmojiViewModelSpec: QuickSpec {
                 }
                 
                 it("Get Emojis With JSON Mapping Error") {
-                    sut.githubManager = GithubNetworkManagerMock(status: .jsonMapping)
+                    sut.networkManager = GithubNetworkManagerMock(status: .jsonMapping)
                     
                     sut.getEmojis { (emoji, error) in
                         expect(emoji).to(beNil())
@@ -56,7 +56,7 @@ class EmojiViewModelSpec: QuickSpec {
                 }
                 
                 it("Get Emojis With Not Found Error") {
-                    sut.githubManager = GithubNetworkManagerMock(status: .notFound(name: "Emojis"))
+                    sut.networkManager = GithubNetworkManagerMock(status: .notFound(name: "Emojis"))
                     
                     sut.getEmojis { (emoji, error) in
                         expect(emoji).to(beNil())
@@ -98,7 +98,7 @@ class EmojiViewModelSpec: QuickSpec {
                 }
                 
                 it("Get Avatar With Not Found Error") {
-                    sut.githubManager = GithubNetworkManagerMock(status: .notFound(name: "Avatar"))
+                    sut.networkManager = GithubNetworkManagerMock(status: .notFound(name: "Avatar"))
                     
                     sut.getAvatar(login: "avatar") { (avatar, error) in
                         expect(avatar).to(beNil())
@@ -108,7 +108,7 @@ class EmojiViewModelSpec: QuickSpec {
                 }
                 
                 it("Get Avatar With Internet Connection Error") {
-                    sut.githubManager = GithubNetworkManagerMock(status: .internetConnection)
+                    sut.networkManager = GithubNetworkManagerMock(status: .internetConnection)
                     
                     sut.getAvatar(login: "avatar") { (avatar, error) in
                         expect(avatar).to(beNil())
@@ -118,7 +118,7 @@ class EmojiViewModelSpec: QuickSpec {
                 }
                 
                 it("Get Avatar With JSON Mapping Error") {
-                    sut.githubManager = GithubNetworkManagerMock(status: .jsonMapping)
+                    sut.networkManager = GithubNetworkManagerMock(status: .jsonMapping)
                     
                   sut.getAvatar(login: "avatar") { (avatar, error) in
                         expect(avatar).to(beNil())

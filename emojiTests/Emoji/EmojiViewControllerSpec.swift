@@ -98,13 +98,25 @@ class EmojiViewControllerSpec: QuickSpec {
                     
                     expect(sut.searchBar.isFirstResponder).to(beFalse())
                 }
+                
+                it("Search Text Is Empty") {
+                    sut.searchBar.text = ""
+                    
+                    expect(sut.searchBar.text).to(beEmpty())
+                    expect(sutModel.hasIndicatorStartAnimation).to(beFalse())
+                    
+                    sut.searchUserButton(UIButton())
+                    
+                    // Indicator just updates if search button is not empty
+                    expect(sutModel.hasIndicatorStartAnimation).to(beFalse())
+                }
               
                 it("Search Button Shows Indicator") {
+                    sut.searchBar.text = "blissapps"
                     expect(sutModel.hasIndicatorStartAnimation).to(beFalse())
                     
                     sut.searchUserButton(UIButton())
                   
-                    expect(sutModel.hasIndicatorStartAnimation).to(beTrue())
                 }
             }
         }

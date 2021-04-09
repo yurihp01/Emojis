@@ -29,7 +29,11 @@ final class EmojiViewController: BaseViewController {
     
     private func setSearchBarAndIndicator() {
         searchBar.autocapitalizationType = .none
-        searchBar.searchTextField.backgroundColor = .white
+
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.backgroundColor = .white
+        }
+        
         indicator.color = .white
     }
     
@@ -40,21 +44,29 @@ final class EmojiViewController: BaseViewController {
             
             if let emoji = emoji {
                 let key = emoji.keys.randomElement()
-                if let value = emoji.first(where: { $0.key == key })?.value {
-                    self?.setImageView(url: URL(string: value))
+                if let value = emoji.first(where: { $0.key == key })?.value, let url = URL(string: value) {
+                    self?.emojiImage.setImageView(url: url)
                 } else {
-                    self?.showAlert(error: error)
+                    self?.showAlert(message: error?.localizedDescription)
                 }
             } else {
-                self?.showAlert(error: error)
+                self?.showAlert(message: error?.localizedDescription)
             }
         })
     }
-
-    func setImageView(url: URL?) {
-        guard let url = url else { print("URL not found"); return }
-        emojiImage.kf.indicatorType = .activity
-        emojiImage.kf.setImage(with: url, options: [.transition(.fade(0.2)), .cacheOriginalImage, .fromMemoryCacheOrRefresh])
+    
+    private func getAvatar(text: String) {
+        viewModel?.getAvatar(login: text, completion: { [weak self] (user, error) in
+            self?.indicator.stopAnimating()
+            self?.searchBar.text = ""
+            self?.searchBar.resignFirstResponder()
+            
+            if let user = user, let url = user.url {
+                self?.emojiImage.kf.setImage(with: url)
+            } else {
+                self?.showAlert(message: error?.localizedDescription)
+            }
+        })
     }
     
     @IBAction func emojiListButton(_ sender: UIButton) {
@@ -66,19 +78,12 @@ final class EmojiViewController: BaseViewController {
     }
     
     @IBAction func searchUserButton(_ sender: UIButton) {
-        indicator.startAnimating()
-        viewModel?.getAvatar(login: searchBar.text ?? "", completion: { [weak self] (user, error) in
-            self?.indicator.stopAnimating()
-            self?.searchBar.text = ""
-            self?.searchBar.resignFirstResponder()
-            
-            if let user = user {
-                guard let url = user.url else { return }
-                self?.emojiImage.kf.setImage(with: url)
-            } else {
-                self?.showAlert(error: error)
-            }
-        })
+        if let text = searchBar.text, !text.isEmpty {
+            indicator.startAnimating()
+            getAvatar(text: text)
+        } else {
+            showAlert(message: "Search bar text is empty. Insert an user and try again!")
+        }
     }
     
     @IBAction func avatarsListButton(_ sender: UIButton) {
@@ -90,3 +95,20 @@ final class EmojiViewController: BaseViewController {
     }
 }
 
+extension UISearchBar {
+  func setBackgroundColor(){
+    if let view:UIView = self.subviews.first {
+        for curr in view.subviews {
+            guard let searchBarBackgroundClass = NSClassFromString("UISearchBarBackground") else {
+                return
+            }
+            if curr.isKind(of:searchBarBackgroundClass){
+                if let imageView = curr as? UIImageView{
+                    imageView.backgroundColor = .red
+                    break
+                }
+            }
+        }
+    }
+  }
+}

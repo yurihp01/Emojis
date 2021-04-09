@@ -12,5 +12,6 @@ class BaseCollectionViewCell: UICollectionViewCell {
     
     func initialize(url: URL) {
         imageView.setImageView(url: url)
+        imageView.setImageViewLayerProperties()
     }
 }

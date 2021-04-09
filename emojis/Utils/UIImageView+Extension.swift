@@ -10,11 +10,10 @@ import UIKit
 extension UIImageView {
     func setImageView(url: URL) {
         self.kf.indicatorType = .activity
-        self.kf.setImage(with: url, options: [.transition(.fade(0.2)), .cacheOriginalImage, .fromMemoryCacheOrRefresh, .onFailureImage(.remove)])
-        setImageViewLayerProperties()
+        self.kf.setImage(with: url, options: [.transition(.fade(0.2)), .cacheOriginalImage, .fromMemoryCacheOrRefresh])
     }
     
-    private func setImageViewLayerProperties() {
+    func setImageViewLayerProperties() {
         self.layer.cornerRadius = 8.0
         self.clipsToBounds = true
         self.layer.borderColor = UIColor.white.cgColor
