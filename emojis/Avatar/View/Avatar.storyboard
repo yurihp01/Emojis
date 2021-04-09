@@ -18,13 +18,13 @@
                         <color key="backgroundColor" red="0.24075669050000001" green="0.34270846840000002" blue="0.70423918959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Axj-t5-kcX">
                             <size key="itemSize" width="70" height="70"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="40"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="4" minY="4" maxX="4" maxY="4"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="yGD-3X-6Mw" customClass="BaseCollectionViewCell" customModule="emojis" customModuleProvider="target">
-                                <rect key="frame" x="4" y="4" width="70" height="70"/>
+                                <rect key="frame" x="4" y="44" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Pvj-Dp-7Ee">
                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -48,6 +48,23 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="O2w-dz-i9C">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Previous avatars founds:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCn-bR-5LB">
+                                    <rect key="frame" x="12" y="16.5" width="177.5" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.24075669050000001" green="0.34270846840000002" blue="0.70423918959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="GCn-bR-5LB" firstAttribute="leading" secondItem="O2w-dz-i9C" secondAttribute="leadingMargin" constant="4" id="S7g-xI-7iN"/>
+                                <constraint firstAttribute="bottom" secondItem="GCn-bR-5LB" secondAttribute="bottom" constant="4" id="hRm-OE-DK2"/>
+                            </constraints>
+                        </collectionReusableView>
                     </collectionView>
                     <connections>
                         <outlet property="collectionView" destination="BMB-RC-e15" id="yco-6r-iC3"/>
