@@ -17,6 +17,7 @@ class EmojiViewModelMock: EmojiViewModelProtocol  {
     }
     
     var status: Status
+    var hasIndicatorStartAnimation = false
     
     init(status: Status) {
         self.status = status
@@ -27,11 +28,13 @@ class EmojiViewModelMock: EmojiViewModelProtocol  {
         case .error:
             completion(nil, GithubError.jsonMapping)
         case .success:
-            completion(["emoji1":"emoji1", "emoji2":"emoji2"], nil)
+            completion(["emoji1":"https://github.githubassets.com/images/icons/emoji/unicode/1f44e.png?v8", "emoji2":"https://github.githubassets.com/images/icons/emoji/unicode/1f44e.png?v8"], nil)
         }
     }
     
     func getAvatar(login: String, completion: @escaping (Avatar?, Error?) -> Void) {
+        hasIndicatorStartAnimation = true
+
         switch status {
         case .error:
             completion(nil, GithubError.jsonMapping)
@@ -47,25 +50,26 @@ class EmojiViewControllerSpec: QuickSpec {
         describe("EmojiViewController") {
             
             var sut: EmojiViewController!
-            var sutMock: EmojiViewModelMock!
-            
+            var sutModel: EmojiViewModelMock!
+          
             beforeEach {
-                sutMock = EmojiViewModelMock(status: .success)
                 sut = EmojiViewController.instantiate(storyboardName: "Emoji")
-                sut.viewModel = sutMock
+                sutModel = EmojiViewModelMock(status: .success)
+                sut.viewModel = sutModel
                 sut.viewDidLoad()
             }
-            
+          
             afterEach {
-                sut = nil
+              sut = nil
+              sutModel = nil
             }
             
             context("Get Random Image") {
                 it("Get Random Image") {
                     expect(sut.emojiImage.image).to(beNil())
-                    
+
                     sut.getRandomImage()
-                    
+
                     // if Kingfisher downloads the image, it shows a random image
                     expect(sut.emojiImage.image).toEventuallyNot(beNil())
                 }
@@ -73,20 +77,10 @@ class EmojiViewControllerSpec: QuickSpec {
                 it("Get Random Image With Error") {
                     sut.viewModel = EmojiViewModelMock(status: .error)
 
-                    expect(sut.emojiImage.image).to(beNil())
+                    sut.emojiImage.image = nil
                     
                     sut.getRandomImage()
                     
-                    // If Kingfisher cannot download the image, it shows the .remove icon
-                    expect(sut.emojiImage.image).toEventually(equal(.remove))
-                }
-            }
-            
-            context("Set Image View Function With Error") {
-                
-                // I tested only with error because the success case exists on Get random image test
-                it("Nil URL") {
-                    sut.setImageView(url: nil)
                     expect(sut.emojiImage.image).to(beNil())
                 }
             }
@@ -103,6 +97,14 @@ class EmojiViewControllerSpec: QuickSpec {
                     expect(sut.emojiImage.image).to(beNil())
                     
                     expect(sut.searchBar.isFirstResponder).to(beFalse())
+                }
+              
+                it("Search Button Shows Indicator") {
+                    expect(sutModel.hasIndicatorStartAnimation).to(beFalse())
+                    
+                    sut.searchUserButton(UIButton())
+                  
+                    expect(sutModel.hasIndicatorStartAnimation).to(beTrue())
                 }
             }
         }

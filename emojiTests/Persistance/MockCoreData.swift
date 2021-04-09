@@ -32,11 +32,7 @@ class MockCoreData: EmojisCoreDataProtocol {
         switch status {
         case .success:
             avatars.append(Avatar(login: login, avatarUrl: url, id: id))
-        case .deleteError:
-            throw CoreDataError.delete
-        case .retrieveError:
-            throw CoreDataError.retrieve
-        case .saveError:
+        default:
             throw CoreDataError.save
         }
     }
@@ -45,11 +41,7 @@ class MockCoreData: EmojisCoreDataProtocol {
         switch status {
         case .success:
             emoji[name] = link
-        case .deleteError:
-            throw CoreDataError.delete
-        case .retrieveError:
-            throw CoreDataError.retrieve
-        case .saveError:
+        default:
             throw CoreDataError.save
         }
     }
@@ -58,12 +50,9 @@ class MockCoreData: EmojisCoreDataProtocol {
         switch status {
         case .success:
             return emoji
-        case .deleteError:
-            throw CoreDataError.delete
-        case .retrieveError:
+        default:
             throw CoreDataError.retrieve
-        case .saveError:
-            throw CoreDataError.save
+        
         }
     }
     
@@ -71,12 +60,8 @@ class MockCoreData: EmojisCoreDataProtocol {
         switch status {
         case .success:
             return avatars.first(where: { $0.login == login })
-        case .deleteError:
-            throw CoreDataError.delete
-        case .retrieveError:
+        default:
             throw CoreDataError.retrieve
-        case .saveError:
-            throw CoreDataError.save
         }
     }
     
@@ -84,12 +69,8 @@ class MockCoreData: EmojisCoreDataProtocol {
         switch status {
         case .success:
             return avatars.compactMap({ $0.avatarUrl })
-        case .deleteError:
-            throw CoreDataError.delete
-        case .retrieveError:
+        default:
             throw CoreDataError.retrieve
-        case .saveError:
-            throw CoreDataError.save
         }
     }
     
@@ -97,12 +78,8 @@ class MockCoreData: EmojisCoreDataProtocol {
         switch status {
         case .success:
             return avatars.removeAll(where: { $0.avatarUrl == url })
-        case .deleteError:
+        default:
             throw CoreDataError.delete
-        case .retrieveError:
-            throw CoreDataError.retrieve
-        case .saveError:
-            throw CoreDataError.save
         }
     }
 }

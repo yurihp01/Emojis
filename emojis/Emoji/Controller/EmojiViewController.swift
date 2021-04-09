@@ -30,7 +30,7 @@ final class EmojiViewController: BaseViewController {
     private func setSearchBarAndIndicator() {
         searchBar.autocapitalizationType = .none
         searchBar.searchTextField.backgroundColor = .white
-        indicator.color = .black
+        indicator.color = .white
     }
     
     func getRandomImage() {
@@ -54,7 +54,7 @@ final class EmojiViewController: BaseViewController {
     func setImageView(url: URL?) {
         guard let url = url else { print("URL not found"); return }
         emojiImage.kf.indicatorType = .activity
-        emojiImage.kf.setImage(with: url, options: [.transition(.fade(0.2)), .cacheOriginalImage, .fromMemoryCacheOrRefresh, .onFailureImage(.remove)])
+        emojiImage.kf.setImage(with: url, options: [.transition(.fade(0.2)), .cacheOriginalImage, .fromMemoryCacheOrRefresh])
     }
     
     @IBAction func emojiListButton(_ sender: UIButton) {
