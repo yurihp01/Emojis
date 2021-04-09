@@ -32,7 +32,11 @@ final class ReposViewController: BaseViewController {
     }
 
     func getRepos() {
+        indicator.startAnimating()
+      
         viewModel?.getRepos(page: currentPage, completion: { [weak self] (repos, error) in
+            self?.indicator.stopAnimating()
+            
             if let repos = repos {
                 self?.repos = repos
                 self?.tableView.reloadData()

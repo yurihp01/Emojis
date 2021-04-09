@@ -10,9 +10,9 @@ import UIKit
 class BaseViewController: UIViewController, Storyboarded {
     
     lazy var indicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+      let percent = view.bounds.height - view.bounds.height * 0.2
+      let indicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x - 24, y: percent, width: 40, height: 40))
         indicator.color = .white
-        indicator.center = view.center
         indicator.style = .large
         indicator.hidesWhenStopped = true
         return indicator
