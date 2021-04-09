@@ -9,23 +9,28 @@ import UIKit
 
 final class AvatarViewController: BaseViewController {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - Variables
     var avatarUrls: [String] = []
     
     var viewModel: AvatarViewModelProtocol?
     weak var coordinator: AvatarCoordinator?
     
+    // MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         getAvatars()
         setCollectionView()
     }
     
+    // MARK: - Functions
     private func setCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.accessibilityIdentifier = Constants.avatarList
     }
     
     private func getAvatars() {
@@ -40,6 +45,7 @@ final class AvatarViewController: BaseViewController {
     }
 }
 
+// MARK: - Extensions
 extension AvatarViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -49,11 +55,11 @@ extension AvatarViewController: UICollectionViewDelegateFlowLayout, UICollection
     func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? BaseCollectionViewCell, !avatarUrls.isEmpty, let url = URL(string: avatarUrls[indexPath.row]) {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cell, for: indexPath) as? BaseCollectionViewCell, !avatarUrls.isEmpty, let url = URL(string: avatarUrls[indexPath.row]) {
             cell.initialize(url: url)
             return cell
         } else {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+            return collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cell, for: indexPath)
         }
     }
     
@@ -70,7 +76,7 @@ extension AvatarViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath)
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Constants.header, for: indexPath)
             return header
         }
         

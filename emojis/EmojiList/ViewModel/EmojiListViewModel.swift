@@ -5,28 +5,33 @@
 //  Created by Yuri Pedroso on 03/04/21.
 //
 
-import UIKit
+import Foundation
 
+// MARK: - Protocols
 protocol EmojiListViewModelProtocol {
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void)
 }
 
+// MARK: - ViewModel
 class EmojiListViewModel: EmojiListViewModelProtocol {
     
+    // MARK: - Variables
     var networkManager: GithubNetworkManagerProtocol
     var coreData: EmojisCoreDataProtocol
     
+    // MARK: - Init and Deinit
     init() {
-        print("INIT - EmojiListViewModel")
-        
         coreData = EmojisCoreData.shared
         networkManager = GithubNetworkManager.shared
+        
+        print("INIT - EmojiListViewModel")
     }
     
     deinit {
         print("DEINIT - EmojiListViewModel")
     }
     
+    // MARK: - Functions
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void) {
         do {
             let retrievedEmoji = try coreData.retrieveEmoji()

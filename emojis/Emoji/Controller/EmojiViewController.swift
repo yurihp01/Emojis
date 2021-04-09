@@ -8,29 +8,37 @@
 import UIKit
 import Kingfisher
 
+// MARK: - Protocols
 protocol EmojiProtocol: class {
     func emojisList()
     func avatarsList()
 }
 
+// MARK: - Class
 final class EmojiViewController: BaseViewController {
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var emojiImage: UIImageView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    // MARK: - Variables
     weak var coordinator: EmojiCoordinator?
     var viewModel: EmojiViewModelProtocol?
     var emoji: [String] = []
     
+    // MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         setSearchBarAndIndicator()
         getRandomImage()
     }
     
+    // MARK: - Functions
     private func setSearchBarAndIndicator() {
         searchBar.autocapitalizationType = .none
-
-        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+        searchBar.accessibilityTraits = UIAccessibilityTraits.searchField
+        
+        if let textfield = searchBar.value(forKey: Constants.searchField) as? UITextField {
             textfield.backgroundColor = .white
         }
         
@@ -69,6 +77,7 @@ final class EmojiViewController: BaseViewController {
         })
     }
     
+    // MARK: - IBActions
     @IBAction func emojiListButton(_ sender: UIButton) {
         coordinator?.emojisList()
     }
@@ -82,7 +91,7 @@ final class EmojiViewController: BaseViewController {
             indicator.startAnimating()
             getAvatar(text: text)
         } else {
-            showAlert(message: "Search bar text is empty. Insert an user and try again!")
+            showAlert(message: Constants.searchFieldError)
         }
     }
     
@@ -95,20 +104,21 @@ final class EmojiViewController: BaseViewController {
     }
 }
 
+// MARK: - Extensions
 extension UISearchBar {
-  func setBackgroundColor(){
-    if let view:UIView = self.subviews.first {
-        for curr in view.subviews {
-            guard let searchBarBackgroundClass = NSClassFromString("UISearchBarBackground") else {
-                return
-            }
-            if curr.isKind(of:searchBarBackgroundClass){
-                if let imageView = curr as? UIImageView{
-                    imageView.backgroundColor = .red
-                    break
+    func setBackgroundColor(){
+        if let view:UIView = self.subviews.first {
+            for curr in view.subviews {
+                guard let searchBarBackgroundClass = NSClassFromString(Constants.searchBarBackground) else {
+                    return
+                }
+                if curr.isKind(of:searchBarBackgroundClass){
+                    if let imageView = curr as? UIImageView{
+                        imageView.backgroundColor = .red
+                        break
+                    }
                 }
             }
         }
     }
-  }
 }

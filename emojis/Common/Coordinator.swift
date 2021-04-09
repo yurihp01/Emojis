@@ -7,11 +7,14 @@
 
 import UIKit
 
+// MARK: - Protocols
 protocol Coordinator: class {
+    // MARK: - Variables
     var navigationController: UINavigationController { get set }
     var childCoordinators: [Coordinator] { get set }
     var parentCoordinator: Coordinator? { get set }
     
+    // MARK: - Functions
     func start()
     func back()
     func add(childCoordinator coordinator: Coordinator)
@@ -19,6 +22,7 @@ protocol Coordinator: class {
     func childDidFinish(_ child: Coordinator?)
 }
 
+// MARK: - Extensions
 extension Coordinator {
     func add(childCoordinator coordinator: Coordinator) {
         childCoordinators.append(coordinator)

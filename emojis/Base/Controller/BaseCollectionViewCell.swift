@@ -8,8 +8,11 @@
 import UIKit
 
 class BaseCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var imageView: UIImageView!
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var imageView: UIImageView!
+
+    // MARK: - Functions
     func initialize(url: URL) {
         imageView.setImageView(url: url)
         imageView.setImageViewLayerProperties()

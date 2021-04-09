@@ -8,26 +8,30 @@
 import UIKit
 
 final class EmojiListViewController: BaseViewController {
-    
+    // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let refreshControl = UIRefreshControl()
+    // MARK: - Variables
+    private let refreshControl = UIRefreshControl()
     
     var emoji: [String] = []
     var viewModel: EmojiListViewModelProtocol?
     weak var coordinator: EmojiListCoordinator?
     
+    // MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         getEmojis()
         setViews()
     }
     
+    // MARK: - Functions
     private func setViews() {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
         collectionView.refreshControl = refreshControl
+        collectionView.accessibilityIdentifier = Constants.emojiList
         
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
         refreshControl.tintColor = .white
@@ -55,6 +59,7 @@ final class EmojiListViewController: BaseViewController {
     }
 }
 
+// MARK: - Extensions
 extension EmojiListViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,11 +70,12 @@ extension EmojiListViewController: UICollectionViewDelegateFlowLayout, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? BaseCollectionViewCell, !emoji.isEmpty, let url = URL(string: emoji[indexPath.row]) {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cell, for: indexPath) as? BaseCollectionViewCell, !emoji.isEmpty, let url = URL(string: emoji[indexPath.row]) {
             cell.initialize(url: url)
+            cell.accessibilityIdentifier = Constants.cells
             return cell
         } else {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+            return collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cell, for: indexPath)
         }
     }
     

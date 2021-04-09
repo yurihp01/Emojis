@@ -22,7 +22,7 @@ class ReposViewControllerSpec: QuickSpec {
             var sut: ReposViewController!
             
             beforeEach {
-                sut = ReposViewController.instantiate(storyboardName: "Repos")
+                sut = ReposViewController.instantiate(storyboardName: .repos)
                 sut.viewDidLoad()
                 sut.viewModel = ReposMockViewModel()
             }

@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIImageView {
+    // MARK: - Functions
     func setImageView(url: URL) {
         self.kf.indicatorType = .activity
         self.kf.setImage(with: url, options: [.transition(.fade(0.2)), .cacheOriginalImage, .fromMemoryCacheOrRefresh])

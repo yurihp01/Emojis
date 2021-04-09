@@ -9,34 +9,75 @@ import XCTest
 
 class emojisUITests: XCTestCase {
 
+    let app = XCUIApplication()
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        continueAfterFailure = false
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    func testSearchAvatar() throws {
+        let searchfield = app.searchFields.element(boundBy: 0)
+        searchfield.tap()
+        searchfield.typeText(Constants.searchBarText)
+        app.staticTexts[Constants.searchButton].tap()
+        
+        XCTAssertTrue(searchfield.title.isEmpty, "Search textfield should be empty")
+        sleep(5)
+        
+        app.buttons[Constants.avatarListButton].tap()
+        
+        let cellsCount = app.collectionViews[Constants.avatarList].cells.count
+        let header = app.staticTexts[Constants.avatarHeader]
+        
+        XCTAssertTrue(header.exists, "Collection view header should exists")
+        XCTAssertTrue(cellsCount > 0, "Cells count should be more than 0.")
     }
+    
+    func testSearchAvatarIsEmpty() throws {
+        let searchfield = app.searchFields.element(boundBy: 0)
+
+        app.staticTexts[Constants.searchButton].tap()
+        XCTAssertTrue(app.staticTexts[Constants.searchBarError].exists, "Search button should shows a dialog with error message")
+        
+        app.buttons[Constants.okButton].tap()
+        XCTAssertTrue(searchfield.title.isEmpty, "Search textfield should be empty")
+    }
+    
+    func testEmojisList() throws {
+        app.staticTexts[Constants.emojiListButton].tap()
+        
+        let cellsCount = app.collectionViews[Constants.emojiList].cells.count
+                    
+        XCTAssertTrue(cellsCount > 0, "Cells count must be more than 0.")
+    }
+    
+    func testReposList() {
+        
+        let app = XCUIApplication()
+        app.staticTexts[Constants.reposButton].tap()
+        
+        let _ = app.tables[Constants.reposList].waitForExistence(timeout: 5)
+
+        scrolls(to: -6)
+        scrolls(to: 6)
+
+        existsText()
+    }
+    
+    private func existsText() {
+        let cellCount = app.tables[Constants.reposList].cells.count
+        XCTAssertTrue(cellCount > 0, "This cell should be shown.")
+    }
+    
+    private func scrolls(to value: Int) {
+        existsText()
+        let cell = app.tables[Constants.reposList].cells.firstMatch
+        let start = app.tables[Constants.reposList].cells.firstMatch.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        let finish = cell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: value))
+        start.press(forDuration: 0, thenDragTo: finish)
+        
+        sleep(2)
+    }
+    
 }

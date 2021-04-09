@@ -7,18 +7,22 @@
 import UIKit
 
 class EmojiCoordinator: Coordinator {
+    
+    // MARK: - Variables
     var navigationController: UINavigationController
     
     var childCoordinators: [Coordinator] = []
     
     var parentCoordinator: Coordinator?
     
+    // MARK: - Initialization
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
+    // MARK: - Functions
     func start() {
-        let viewController = EmojiViewController.instantiate(storyboardName: "Emoji")
+        let viewController = EmojiViewController.instantiate(storyboardName: .emoji)
         viewController.viewModel = EmojiViewModel()
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
@@ -29,6 +33,7 @@ class EmojiCoordinator: Coordinator {
     }
 }
 
+// MARK: - Extensions
 extension EmojiCoordinator: EmojiProtocol {
     func avatarsList() {
         let coordinator = AvatarCoordinator(with: navigationController)

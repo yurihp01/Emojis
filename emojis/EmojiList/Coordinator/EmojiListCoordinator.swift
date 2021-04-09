@@ -8,18 +8,22 @@
 import UIKit
 
 class EmojiListCoordinator: Coordinator {
+    
+    // MARK: - Variables
     var navigationController: UINavigationController
     
     var childCoordinators: [Coordinator] = []
     
     var parentCoordinator: Coordinator?
     
+    // MARK: - Initialization
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
+    // MARK: - Functions
     func start() {
-        let viewController = EmojiListViewController.instantiate(storyboardName: "EmojiList")
+        let viewController = EmojiListViewController.instantiate(storyboardName: .emojiList)
         viewController.viewModel = EmojiListViewModel()
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)

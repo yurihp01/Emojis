@@ -53,6 +53,8 @@
 		FA816164261509EB00A85A6F /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA816163261509EB00A85A6F /* Storyboarded.swift */; };
 		FA81616C2615123F00A85A6F /* GithubNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81616B2615123F00A85A6F /* GithubNetworkManager.swift */; };
 		FAAADD7226161FF200AA840C /* GithubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAADD7126161FF200AA840C /* GithubError.swift */; };
+		FAF084E12620E0D00011F842 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF084E02620E0D00011F842 /* Constants.swift */; };
+		FAF084E92620FDA00011F842 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF084E82620FDA00011F842 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,8 @@
 		FA816163261509EB00A85A6F /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		FA81616B2615123F00A85A6F /* GithubNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubNetworkManager.swift; sourceTree = "<group>"; };
 		FAAADD7126161FF200AA840C /* GithubError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubError.swift; sourceTree = "<group>"; };
+		FAF084E02620E0D00011F842 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FAF084E82620FDA00011F842 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +219,7 @@
 				FA252C42261BA9B800D4559C /* UIImageView+Extension.swift */,
 				FA252C2E261B957D00D4559C /* UIAlertController+Extension.swift */,
 				FA11F2B8261D27B300849936 /* Dictionary+Extension.swift */,
+				FAF084E82620FDA00011F842 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				FA252D23261BCDEB00D4559C /* emojisUITests.swift */,
+				FAF084E02620E0D00011F842 /* Constants.swift */,
 				FA252D25261BCDEB00D4559C /* Info.plist */,
 			);
 			path = emojisUITests;
@@ -817,6 +823,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA252D24261BCDEB00D4559C /* emojisUITests.swift in Sources */,
+				FAF084E12620E0D00011F842 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,6 +836,7 @@
 				FA60D9D2261A0ACD008D04BD /* ReposViewModel.swift in Sources */,
 				FA6CF7302618B45600FFBFF6 /* EmojiListViewModel.swift in Sources */,
 				FA6CF7AB2619949E00FFBFF6 /* AvatarCoordinator.swift in Sources */,
+				FAF084E92620FDA00011F842 /* Constants.swift in Sources */,
 				FA252C1A261B350D00D4559C /* BaseViewController.swift in Sources */,
 				FA6CF6E726178B6200FFBFF6 /* EmojisCoreData.swift in Sources */,
 				FA6CF69E26177E7E00FFBFF6 /* Emojis.xcdatamodeld in Sources */,

@@ -5,17 +5,21 @@
 //  Created by Yuri Pedroso on 04/04/21.
 //
 
-import UIKit
+import Foundation
 
+// MARK: - Protocols
 protocol AvatarViewModelProtocol {
     func getAvatarsUrl(completion: ([String]?, Error?) -> Void)
     func deleteAvatar(url: String, completion: (Error?) -> Void)
 }
 
+// MARK: - ViewModel
 class AvatarViewModel: AvatarViewModelProtocol {
-
+    
+    // MARK: - Variables
     var coreData: EmojisCoreDataProtocol
     
+    // MARK: - Init and Deinit
     init() {
         coreData = EmojisCoreData.shared
         
@@ -26,6 +30,7 @@ class AvatarViewModel: AvatarViewModelProtocol {
         print("DEINIT - AvatarViewModel")
     }
     
+    // MARK: - Functions
     func getAvatarsUrl(completion: ([String]?, Error?) -> Void) {
         do {
             let urls = try coreData.retrieveAvatarsUrl()

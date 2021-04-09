@@ -7,22 +7,29 @@
 
 import Foundation
 
+// MARK: - Protocols
 protocol ReposViewModelProtocol {
     func getRepos(page: Int, completion: @escaping ([String]?,Error?) -> Void)
 }
 
+// MARK: - ViewModel
 class ReposViewModel: ReposViewModelProtocol {
+    
+    // MARK: - Variables
     var githubNetwork: GithubNetworkManagerProtocol
     
+    // MARK: - Init and Deinit
     init() {
-        print("INIT - ReposViewModel")
         githubNetwork = GithubNetworkManager.shared
+        
+        print("INIT - ReposViewModel")
     }
     
     deinit {
         print("DEINIT - ReposViewModel")
     }
     
+    // MARK: - Functions
     func getRepos(page: Int, completion: @escaping ([String]?, Error?) -> Void) {
         githubNetwork.getRepos(page: page) { (repos, error) in
             if let repos = repos {

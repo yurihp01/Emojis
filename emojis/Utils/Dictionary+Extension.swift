@@ -8,6 +8,7 @@
 import Foundation
 
 extension Dictionary {
+    // MARK: - Variables
     var jsonStringRepresentation: String? {
         guard let theJSONData = try? JSONSerialization.data(withJSONObject: self, options: [.prettyPrinted]) else {
             return nil

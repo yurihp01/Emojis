@@ -53,7 +53,7 @@ class EmojiViewControllerSpec: QuickSpec {
             var sutModel: EmojiViewModelMock!
           
             beforeEach {
-                sut = EmojiViewController.instantiate(storyboardName: "Emoji")
+                sut = EmojiViewController.instantiate(storyboardName: .emoji)
                 sutModel = EmojiViewModelMock(status: .success)
                 sut.viewModel = sutModel
                 sut.viewDidLoad()
