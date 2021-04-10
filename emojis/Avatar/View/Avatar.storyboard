@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Avatar View Controller-->
+        <scene sceneID="Oe5-tI-Ke4">
+            <objects>
+                <viewController storyboardIdentifier="AvatarViewController" id="BVV-vp-HOk" customClass="AvatarViewController" customModule="emojis" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="BMB-RC-e15">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.24075669050000001" green="0.34270846840000002" blue="0.70423918959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Axj-t5-kcX">
+                            <size key="itemSize" width="70" height="70"/>
+                            <size key="headerReferenceSize" width="50" height="40"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="4" minY="4" maxX="4" maxY="4"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="yGD-3X-6Mw" customClass="BaseCollectionViewCell" customModule="emojis" customModuleProvider="target">
+                                <rect key="frame" x="4" y="44" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Pvj-Dp-7Ee">
+                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1tc-bF-Bpo">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1tc-bF-Bpo" firstAttribute="top" secondItem="Pvj-Dp-7Ee" secondAttribute="top" id="09E-Zr-ohT"/>
+                                        <constraint firstItem="1tc-bF-Bpo" firstAttribute="leading" secondItem="Pvj-Dp-7Ee" secondAttribute="leading" id="7L4-cj-bXt"/>
+                                        <constraint firstItem="1tc-bF-Bpo" firstAttribute="width" secondItem="Pvj-Dp-7Ee" secondAttribute="width" id="9Lt-fr-JMe"/>
+                                        <constraint firstAttribute="trailing" secondItem="1tc-bF-Bpo" secondAttribute="trailing" id="M62-FA-zrC"/>
+                                        <constraint firstItem="1tc-bF-Bpo" firstAttribute="height" secondItem="Pvj-Dp-7Ee" secondAttribute="height" id="VZh-bY-UJP"/>
+                                        <constraint firstAttribute="bottom" secondItem="1tc-bF-Bpo" secondAttribute="bottom" id="Wzo-DR-BIE"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <connections>
+                                    <outlet property="imageView" destination="1tc-bF-Bpo" id="BKX-bG-cjv"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="O2w-dz-i9C" customClass="BaseCollectionViewCell" customModule="emojis" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Previous avatars found:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCn-bR-5LB">
+                                    <rect key="frame" x="12" y="16.5" width="169.5" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.24075669050000001" green="0.34270846840000002" blue="0.70423918959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="GCn-bR-5LB" firstAttribute="leading" secondItem="O2w-dz-i9C" secondAttribute="leadingMargin" constant="4" id="S7g-xI-7iN"/>
+                                <constraint firstAttribute="bottom" secondItem="GCn-bR-5LB" secondAttribute="bottom" constant="4" id="hRm-OE-DK2"/>
+                            </constraints>
+                        </collectionReusableView>
+                    </collectionView>
+                    <connections>
+                        <outlet property="collectionView" destination="BMB-RC-e15" id="yco-6r-iC3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fyr-af-VIU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="32"/>
+        </scene>
+    </scenes>
+</document>
