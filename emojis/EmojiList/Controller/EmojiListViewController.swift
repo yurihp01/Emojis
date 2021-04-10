@@ -66,6 +66,12 @@ extension EmojiListViewController: UICollectionViewDelegateFlowLayout, UICollect
         return emoji.isEmpty ? 0 : emoji.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let minSpace: CGFloat = 10
+        let size = (collectionView.frame.size.width - minSpace) / 5
+        return CGSize(width: size, height: size)
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

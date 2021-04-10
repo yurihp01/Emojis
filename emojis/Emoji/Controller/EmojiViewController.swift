@@ -37,6 +37,8 @@ final class EmojiViewController: BaseViewController {
     private func setSearchBarAndIndicator() {
         searchBar.autocapitalizationType = .none
         searchBar.accessibilityTraits = UIAccessibilityTraits.searchField
+        searchBar.delegate = self
+        searchBar.returnKeyType = .search
         
         if let textfield = searchBar.value(forKey: Constants.searchField) as? UITextField {
             textfield.backgroundColor = .white
@@ -102,23 +104,14 @@ final class EmojiViewController: BaseViewController {
     @IBAction func appleRepositories(_ sender: UIButton) {
         coordinator?.reposList()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
-// MARK: - Extensions
-extension UISearchBar {
-    func setBackgroundColor(){
-        if let view:UIView = self.subviews.first {
-            for curr in view.subviews {
-                guard let searchBarBackgroundClass = NSClassFromString(Constants.searchBarBackground) else {
-                    return
-                }
-                if curr.isKind(of:searchBarBackgroundClass){
-                    if let imageView = curr as? UIImageView{
-                        imageView.backgroundColor = .red
-                        break
-                    }
-                }
-            }
-        }
+extension EmojiViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
 }

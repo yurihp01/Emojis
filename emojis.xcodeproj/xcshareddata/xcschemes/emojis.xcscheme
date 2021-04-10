@@ -61,16 +61,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FA8160F82614BC5300A85A6F"
-               BuildableName = "emojisTests.xctest"
-               BlueprintName = "emojisTests"
-               ReferencedContainer = "container:emojis.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA252D20261BCDEB00D4559C"
                BuildableName = "emojisUITests.xctest"
                BlueprintName = "emojisUITests"

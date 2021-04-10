@@ -8,13 +8,12 @@ target 'emojis' do
   # Pods for emojis
   pod 'Moya', '~> 14.0'
   pod 'Kingfisher', '~> 6.0'
-  
-  pod 'Quick'
-  pod 'Nimble'
 
   target 'emojiTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
   end
 
   target 'emojisUITests' do

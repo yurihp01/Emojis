@@ -31,6 +31,6 @@ struct Constants {
     static let cell = "cell"
     static let header = "header"
     static let cells = "cells"
-    static let okButton = "ok"
+    static let okButton = "OK"
     
 }

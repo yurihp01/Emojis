@@ -13,7 +13,7 @@ struct Constants {
     static let reposButton = "APPLE REPOS"
     static let randomButton = "RANDOM EMOJI"
     static let emojiListButton = "EMOJI LIST"
-    static let okButton = "ok"
+    static let okButton = "OK"
     static let backButton = "Back"
 
     static let emojiList = "emojiList"
