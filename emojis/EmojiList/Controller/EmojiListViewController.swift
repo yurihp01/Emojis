@@ -7,7 +7,9 @@
 
 import UIKit
 
+// MARK: - Class
 final class EmojiListViewController: BaseViewController {
+    
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView!
     

@@ -6,6 +6,7 @@
 //
 import UIKit
 
+// MARK: - Class
 class EmojiCoordinator: Coordinator {
     
     // MARK: - Variables

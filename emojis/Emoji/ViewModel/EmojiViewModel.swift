@@ -12,7 +12,7 @@ protocol EmojiViewModelProtocol {
     func getAvatar(login: String, completion: @escaping (Avatar?, Error?) -> Void)
 }
 
-// MARK: - ViewModel
+// MARK: - Class
 class EmojiViewModel: EmojiViewModelProtocol {
     
     // MARK: - Variables

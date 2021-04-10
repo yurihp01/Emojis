@@ -110,6 +110,7 @@ final class EmojiViewController: BaseViewController {
     }
 }
 
+// MARK: - Extensions
 extension EmojiViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)

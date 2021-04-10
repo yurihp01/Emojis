@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Structs
 struct Avatar {
     let avatarUrl: String
     let login: String
@@ -23,6 +24,7 @@ struct Avatar {
     }
 }
 
+// MARK: - Extensions
 extension Avatar: Codable {
     enum CodingKeys: String, CodingKey {
         case avatarUrl = "avatar_url"

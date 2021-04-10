@@ -9,12 +9,14 @@ import Quick
 import Nimble
 @testable import emojis
 
+// MARK: - Mock
 class ReposMockViewModel: ReposViewModelProtocol {
     func getRepos(page: Int, completion: @escaping ([String]?, Error?) -> Void) {
         page == 1 ? completion(["Apple 1", "Apple 2"], nil) : completion(nil, GithubError.notFound(name: "Repos"))
     }
 }
 
+// MARK: - Tests - ReposViewControllerSpec
 class ReposViewControllerSpec: QuickSpec {
     override func spec() {
         describe("ReposViewController") {

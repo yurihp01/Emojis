@@ -7,22 +7,29 @@
 
 import Moya
 
+// MARK: - Protocols
 protocol GithubNetworkManagerProtocol {
     func getAvatarByUsername(username: String, completion: @escaping (Avatar?, Error?) -> Void)
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void)
     func getRepos(page: Int, completion: @escaping ([Repo]?, Error?) -> Void)
 }
 
+// MARK: - FilePrivate Constant
 fileprivate let username = "apple"
 fileprivate let size = 10
 
+// MARK: - Class
 final class GithubNetworkManager: GithubNetworkManagerProtocol {
+    
+    // MARK: - Variables
     static let shared = GithubNetworkManager()
     
     var provider = MoyaProvider<GithubService>()
     
+    // MARK: - Init
     private init() {}
 
+    // MARK: - Functions
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void) {
         provider.request(.emoji) { (result) in
             switch result {

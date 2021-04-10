@@ -8,11 +8,13 @@
 import Foundation
 import Moya
 
+// MARK: - Enums
 enum GithubService {
     case emoji
     case avatar(username: String, page: Int? = nil, size: Int? = nil)
 }
 
+// MARK: - Extensions
 extension GithubService: TargetType {
     var method: Moya.Method {
         switch self {

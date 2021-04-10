@@ -8,8 +8,10 @@
 import UIKit
 import CoreData
 
+// MARK: - Typealias
 typealias EmojiType = [String:String]
 
+// MARK: - Protocols
 protocol EmojisCoreDataProtocol {
     func saveAvatar(login: String, url: String, id: Int) throws
     func saveEmoji(name:String, link: String) throws
@@ -19,10 +21,13 @@ protocol EmojisCoreDataProtocol {
     func deleteAvatar(url: String) throws
 }
 
+// MARK: - Class
 final class EmojisCoreData: EmojisCoreDataProtocol {
 
+    // MARK: - Variables
     static let shared = EmojisCoreData()
     
+    // MARK: - Functions
     func saveAvatar(login: String, url: String, id: Int) throws {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext

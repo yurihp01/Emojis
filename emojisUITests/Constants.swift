@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Constants
 struct Constants {
     static let searchButton = "SEARCH"
     static let avatarListButton = "AVATARS LIST"

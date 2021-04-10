@@ -12,7 +12,7 @@ protocol ReposViewModelProtocol {
     func getRepos(page: Int, completion: @escaping ([String]?,Error?) -> Void)
 }
 
-// MARK: - ViewModel
+// MARK: - Class
 class ReposViewModel: ReposViewModelProtocol {
     
     // MARK: - Variables

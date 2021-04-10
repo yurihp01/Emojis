@@ -7,12 +7,14 @@
 
 import Foundation
 
+// MARK: - Enums
 enum CoreDataError: Error {
     case save
     case retrieve
     case delete
 }
 
+// MARK: - Extensions
 extension CoreDataError: LocalizedError {
     var errorDescription: String? {
         switch self {

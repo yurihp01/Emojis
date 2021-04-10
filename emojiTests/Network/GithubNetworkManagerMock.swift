@@ -9,7 +9,10 @@ import Nimble
 import Quick
 @testable import emojis
 
+// MARK: - Class
 class GithubNetworkManagerMock: GithubNetworkManagerProtocol {
+    
+    // MARK: - Enums
     enum Status {
         case success
         case notFound(name: String)
@@ -17,12 +20,15 @@ class GithubNetworkManagerMock: GithubNetworkManagerProtocol {
         case internetConnection
     }
     
+    // MARK: - Variables
     private let status: Status
     
+    // MARK: - Init
     init(status: Status) {
         self.status = status
     }
     
+    // MARK: - Functions
     func getAvatarByUsername(username: String, completion: @escaping (Avatar?, Error?) -> Void) {
         switch status {
         case .success:

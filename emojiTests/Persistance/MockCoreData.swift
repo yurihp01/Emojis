@@ -10,8 +10,10 @@ import Quick
 import CoreData
 @testable import emojis
 
+// MARK: - Class
 class MockCoreData: EmojisCoreDataProtocol {
     
+    // MARK: - Enums
     enum Status {
         case success
         case saveError
@@ -19,15 +21,18 @@ class MockCoreData: EmojisCoreDataProtocol {
         case retrieveError
     }
     
+    // MARK: - Variables
     let status: Status
-    
-    init(status: Status) {
-        self.status = status
-    }
     
     var avatars: [Avatar] = []
     var emoji: EmojiType = [:]
     
+    // MARK: - Init
+    init(status: Status) {
+        self.status = status
+    }
+    
+    // MARK: - Functions
     func saveAvatar(login: String, url: String, id: Int) throws {
         switch status {
         case .success:

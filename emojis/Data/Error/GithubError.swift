@@ -7,12 +7,14 @@
 
 import Foundation
 
+// MARK: Enums
 enum GithubError: Error {
     case notFound(name: String)
     case jsonMapping
     case internetConnection
 }
 
+// MARK: Extensions
 extension GithubError: LocalizedError {
     var errorDescription: String? {
         switch self {

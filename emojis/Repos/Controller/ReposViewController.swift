@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Class
 final class ReposViewController: BaseViewController {
     
     // MARK: - IBOutlets

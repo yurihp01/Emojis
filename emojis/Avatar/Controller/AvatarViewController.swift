@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Class
 final class AvatarViewController: BaseViewController {
     
     // MARK: - IBOutlets
@@ -61,6 +62,7 @@ extension AvatarViewController: UICollectionViewDelegateFlowLayout, UICollection
     func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cell, for: indexPath) as? BaseCollectionViewCell, !avatarUrls.isEmpty, let url = URL(string: avatarUrls[indexPath.row]) {
             cell.initialize(url: url)
             return cell

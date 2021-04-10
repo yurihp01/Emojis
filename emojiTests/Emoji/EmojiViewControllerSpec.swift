@@ -9,20 +9,25 @@ import Nimble
 import Quick
 @testable import emojis
 
+// MARK: - Mock
 class EmojiViewModelMock: EmojiViewModelProtocol  {
     
+    // MARK: - Enums
     enum Status {
         case error
         case success
     }
     
+    // MARK: - Variables
     var status: Status
     var hasIndicatorStartAnimation = false
     
+    // MARK: - Init
     init(status: Status) {
         self.status = status
     }
     
+    // MARK: - Functions
     func getEmojis(completion: @escaping (EmojiType?, Error?) -> Void) {
         switch status {
         case .error:
@@ -44,6 +49,7 @@ class EmojiViewModelMock: EmojiViewModelProtocol  {
     }
 }
 
+// MARK: - Tests - EmojiViewControllerSpec
 class EmojiViewControllerSpec: QuickSpec {
 
     override func spec() {

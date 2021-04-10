@@ -7,15 +7,19 @@
 
 import XCTest
 
+// MARK: - Class
 class emojisUITests: XCTestCase {
 
+    // MARK: - Variables
     let app = XCUIApplication()
     
+    // MARK: - Override Functions
     override func setUpWithError() throws {
         app.launch()
         continueAfterFailure = false
     }
     
+    // MARK: - Functions
     func testSearchAvatar() throws {
         let searchfield = app.searchFields.element(boundBy: 0)
         searchfield.tap()

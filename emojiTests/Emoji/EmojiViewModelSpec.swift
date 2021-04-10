@@ -9,6 +9,7 @@ import Nimble
 import Quick
 @testable import emojis
 
+// MARK: - Tests - EmojiViewModelSpec
 class EmojiViewModelSpec: QuickSpec {
     
     override func spec() {

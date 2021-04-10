@@ -9,6 +9,7 @@ import UIKit
 
 // MARK: - Protocols
 protocol Coordinator: class {
+    
     // MARK: - Variables
     var navigationController: UINavigationController { get set }
     var childCoordinators: [Coordinator] { get set }

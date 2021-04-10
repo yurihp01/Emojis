@@ -9,6 +9,7 @@ import Nimble
 import Quick
 @testable import emojis
 
+// MARK: - Tests - ReposViewModelSpec
 class ReposViewModelSpec: QuickSpec {
     override func spec() {
         describe("ReposViewModel") {

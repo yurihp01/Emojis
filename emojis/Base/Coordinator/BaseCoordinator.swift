@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Class
 class BaseCoordinator: Coordinator {
     // MARK: - Variables
     var navigationController: UINavigationController

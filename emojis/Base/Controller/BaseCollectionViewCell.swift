@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Class
 class BaseCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Structs
 struct Repos: Codable {
     let repos: [Repo]
 }
@@ -23,6 +24,7 @@ struct Repo {
     }
 }
 
+// MARK: - Extensions
 extension Repo: Codable {
     enum CodingKeys: String, CodingKey {
         case id
