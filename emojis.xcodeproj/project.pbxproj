@@ -18,7 +18,6 @@
 		FA252C3B261B9DBF00D4559C /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA252C3A261B9DBF00D4559C /* CoreDataError.swift */; };
 		FA252C43261BA9B800D4559C /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA252C42261BA9B800D4559C /* UIImageView+Extension.swift */; };
 		FA252C55261BAC4C00D4559C /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA252C54261BAC4C00D4559C /* BaseCollectionViewCell.swift */; };
-		FA252CFD261BCD8800D4559C /* emojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA252CFC261BCD8800D4559C /* emojiTests.swift */; };
 		FA252D24261BCDEB00D4559C /* emojisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA252D23261BCDEB00D4559C /* emojisUITests.swift */; };
 		FA3E9508261C98C900EF499B /* MockCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E9507261C98C900EF499B /* MockCoreData.swift */; };
 		FA3E9512261C9C4200EF499B /* ReposViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E9511261C9C4200EF499B /* ReposViewControllerSpec.swift */; };
@@ -93,7 +92,6 @@
 		FA252C42261BA9B800D4559C /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		FA252C54261BAC4C00D4559C /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA252CFA261BCD8800D4559C /* emojiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emojiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA252CFC261BCD8800D4559C /* emojiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emojiTests.swift; sourceTree = "<group>"; };
 		FA252CFE261BCD8800D4559C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA252D21261BCDEB00D4559C /* emojisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emojisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA252D23261BCDEB00D4559C /* emojisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emojisUITests.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 				FA3E9510261C9C1F00EF499B /* Repos */,
 				FA11F2AE261D045A00849936 /* Network */,
 				FA3E950F261C9C0300EF499B /* Persistance */,
-				FA252CFC261BCD8800D4559C /* emojiTests.swift */,
 				FA252CFE261BCD8800D4559C /* Info.plist */,
 			);
 			path = emojiTests;
@@ -828,7 +825,6 @@
 			files = (
 				FA607A6A261E16FC00511C29 /* EmojiViewModelSpec.swift in Sources */,
 				FA3E9508261C98C900EF499B /* MockCoreData.swift in Sources */,
-				FA252CFD261BCD8800D4559C /* emojiTests.swift in Sources */,
 				FA11F2B0261D048700849936 /* GithubNetworkManagerMock.swift in Sources */,
 				FA3E9512261C9C4200EF499B /* ReposViewControllerSpec.swift in Sources */,
 				FA11F2AA261D036B00849936 /* ReposViewModelSpec.swift in Sources */,
