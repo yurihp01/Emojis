@@ -5,13 +5,13 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
-  - Nimble (9.0.0)
+  - Nimble (9.0.1)
   - Quick (3.1.2)
 
 DEPENDENCIES:
   - Kingfisher (~> 6.0)
   - Moya (~> 14.0)
-  - Nimble
+  - Nimble (~> 9.0.1)
   - Quick
 
 SPEC REPOS:
@@ -26,9 +26,9 @@ SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   Kingfisher: e71c6fac2aebb1262888cabc2cb13d313362a48f
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
+  Nimble: 7bed62ffabd6dbfe05f5925cbc43722533248990
   Quick: 60f0ea3b8e0cfc0df3259a5c06a238ad8b3c46e0
 
-PODFILE CHECKSUM: b96f6334525d1d554dff4e035d7e83965f2d53ec
+PODFILE CHECKSUM: 57c1f136f55a0e352c7dc739b2896d40e80f9970
 
 COCOAPODS: 1.10.1

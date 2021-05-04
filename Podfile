@@ -13,7 +13,7 @@ target 'emojis' do
     inherit! :search_paths
     # Pods for testing
     pod 'Quick'
-    pod 'Nimble'
+    pod 'Nimble', '~> 9.0.1'
   end
 
   target 'emojisUITests' do
